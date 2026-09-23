@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Proyecto Solar Interactivo Paso a Paso</title>
+<style>
+:root{--navy:#082f4d;--navy2:#062943;--blue:#126d9d;--gold:#f2b134;--bg:#eef4f7;--card:#fff;--ink:#20323d;--muted:#6b7e89;--line:#d7e3e9;--green:#187454;--red:#a8483c;--soft:#f7fafb}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}.wrap{max-width:1050px;margin:auto}
+.hero{background:linear-gradient(135deg,var(--navy2),#0c4d79);color:#fff;padding:45px 20px 60px}.eyebrow{font-size:11px;letter-spacing:.16em;font-weight:900;color:#9ed7f2}.hero h1{font-size:43px;line-height:1.04;margin:10px 0 14px}.hero p{max-width:760px;color:#d9eaf2;margin:0}
+.progressbox{background:#fff;border:1px solid var(--line);border-radius:15px;padding:15px 18px;box-shadow:0 8px 30px #06294322;margin:-27px 20px 0;position:sticky;top:8px;z-index:10}.progressbox>div:first-child{display:flex;justify-content:space-between;font-size:13px;font-weight:800;color:var(--navy)}.bar{height:9px;background:#e7eef2;border-radius:20px;overflow:hidden;margin-top:9px}.bar i{display:block;width:0;height:100%;background:var(--gold);transition:.25s}
+main{padding:25px 20px 60px}.case{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:18px}.case h2,.step h2{color:var(--navy);margin:0 0 10px}.casegrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:15px}.metric{background:#f5f9fb;border:1px solid var(--line);border-radius:10px;padding:12px}.metric b{display:block;color:var(--blue);font-size:20px}
+.step{background:#fff;border:1px solid var(--line);border-radius:16px;margin:15px 0;overflow:hidden;box-shadow:0 4px 18px #15374d0b}.stephead{display:grid;grid-template-columns:54px 1fr;gap:13px;padding:18px 20px;background:#f8fbfc;border-bottom:1px solid var(--line);align-items:center}.num{height:48px;width:48px;border-radius:11px;background:var(--navy);color:#fff;font-size:20px;font-weight:900;display:flex;align-items:center;justify-content:center}.stephead h2{font-size:20px;margin:0}.stephead p{margin:2px 0 0;font-size:12px;color:var(--muted)}.content{padding:20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:13px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+label{font-size:12px;font-weight:800;color:var(--navy)}input,select,textarea{width:100%;margin-top:6px;border:1px solid #bdccd5;border-radius:9px;padding:11px;font:inherit;color:var(--ink);background:#fff}textarea{min-height:80px}
+.formula{background:var(--navy);color:#fff;border-radius:11px;padding:16px;text-align:center;font-size:18px;font-weight:800;margin:14px 0}.hint{background:#fff8e8;border-left:4px solid var(--gold);padding:12px 14px;border-radius:8px;font-size:13px;margin:13px 0}.feedback{display:none;border-radius:9px;padding:11px 13px;margin-top:11px;font-size:13px}.feedback.ok{display:block;background:#eef8f4;border-left:4px solid var(--green)}.feedback.bad{display:block;background:#fff1ef;border-left:4px solid var(--red)}
+.btn{border:0;border-radius:9px;padding:11px 15px;font-weight:900;cursor:pointer;background:var(--navy);color:#fff;margin-top:11px}.btn.gold{background:var(--gold);color:#1c3240}.btn.light{background:#e6eef2;color:var(--navy)}
+.solution{display:none;background:#edf7fb;border:1px solid #bdd9e7;border-radius:11px;padding:15px;margin-top:12px}.solution.show{display:block}.solution h3{color:var(--navy);margin:0 0 7px;font-size:15px}
+.result{background:linear-gradient(135deg,var(--navy2),#0c4d79);color:#fff;border-radius:16px;padding:24px;margin-top:20px}.result h2{margin:0 0 8px}.score{font-size:45px;font-weight:900;color:var(--gold);line-height:1}.resultgrid{display:grid;grid-template-columns:1fr 2fr;gap:20px;align-items:center}.checks{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.check{background:#ffffff10;border:1px solid #ffffff20;border-radius:9px;padding:10px;font-size:12px}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}
+footer{text-align:center;color:var(--muted);font-size:11px;padding:20px}
+@media(max-width:700px){.hero h1{font-size:34px}.casegrid,.grid2,.grid3,.resultgrid,.checks{grid-template-columns:1fr}.progressbox{margin:-27px 0 0;top:0;border-radius:0}.stephead{grid-template-columns:48px 1fr}}
+@media print{.progressbox,.btn,.actions,footer{display:none}.hero{background:#fff!important;color:var(--navy);padding:20px}.hero p,.eyebrow{color:#667}.step,.case{box-shadow:none;break-inside:avoid}.solution{display:block}.result{background:#fff!important;color:var(--navy);border:1px solid #ccc}.score{color:var(--navy)}}
+</style>
+</head>
+<body>
+<section class="hero"><div class="wrap"><div class="eyebrow">BONUS 3 · MANUAL SOLAR</div><h1>Proyecto Solar Interactivo<br>Paso a Paso</h1><p>Ahora tú haces el proyecto. Analiza el caso, toma decisiones y compara tus resultados con la resolución guiada.</p></div></section>
+<div class="wrap progressbox"><div><span>Progreso del proyecto</span><span id="pct">0%</span></div><div class="bar"><i id="bar"></i></div></div>
+<main class="wrap">
+<section class="case"><div class="eyebrow" style="color:var(--blue)">CASO PRÁCTICO · CLIENTE: SOFÍA</div><h2>Tu misión</h2><p>Sofía quiere estudiar un sistema fotovoltaico conectado a red para su vivienda. Los datos siguientes son <b>didácticos</b>. Tu trabajo es construir un dimensionamiento preliminar y reconocer qué información todavía debe validarse antes de un proyecto real.</p>
+<div class="casegrid"><div class="metric"><b>680</b>kWh/mes de referencia</div><div class="metric"><b>130</b>kWh/kWp·mes*</div><div class="metric"><b>550</b>Wp por módulo</div><div class="metric"><b>7,8 × 6,0 m</b>área útil conceptual</div></div>
+<div class="hint">* La producción específica de 130 kWh/kWp·mes es un <b>supuesto didáctico</b> entregado para este ejercicio. En un proyecto real debe obtenerse mediante una fuente/simulación adecuada a la ubicación y configuración.</div></section>
+
+<section class="step" data-step="1"><div class="stephead"><div class="num">01</div><div><h2>Analiza la energía objetivo</h2><p>Empieza por entender qué dato representa el consumo.</p></div></div><div class="content">
+<div class="grid2"><label>Consumo mensual de referencia (kWh)<input id="consumo" type="number" placeholder="Escribe el dato del caso"></label><label>Consumo anual equivalente (kWh)<input id="anual" type="number" placeholder="Calcula 12 meses"></label></div>
+<button class="btn" onclick="check1()">Comprobar</button><div id="fb1" class="feedback"></div>
+<div class="solution" id="sol1"><h3>Resolución</h3><p>680 kWh/mes × 12 = <b>8.160 kWh/año</b>. Es una referencia simplificada. En un proyecto real conviene revisar el histórico mensual y cambios futuros de consumo.</p></div>
+</div></section>
+
+<section class="step" data-step="2"><div class="stephead"><div class="num">02</div><div><h2>Calcula la potencia fotovoltaica inicial</h2><p>Relaciona energía objetivo y producción específica.</p></div></div><div class="content">
+<div class="formula">Potencia inicial = Energía mensual ÷ Producción específica</div>
+<div class="grid2"><label>Producción específica (kWh/kWp·mes)<input id="yield" type="number" placeholder="Dato del ejercicio"></label><label>Potencia inicial calculada (kWp)<input id="kwp" type="number" step=".01" placeholder="Resultado"></label></div>
+<button class="btn" onclick="check2()">Comprobar</button><div id="fb2" class="feedback"></div>
+<div class="solution" id="sol2"><h3>Resolución</h3><p>680 ÷ 130 = <b>5,23 kWp</b> aproximadamente. Todavía no es la potencia final porque debemos convertirla en una cantidad entera de módulos.</p></div>
+</div></section>
+
+<section class="step" data-step="3"><div class="stephead"><div class="num">03</div><div><h2>Selecciona la cantidad de módulos</h2><p>Convierte kWp en módulos reales.</p></div></div><div class="content">
+<div class="formula">Cantidad teórica = 5,23 kWp ÷ 0,55 kWp/módulo ≈ 9,51 módulos</div>
+<div class="grid3"><label>Potencia del módulo (Wp)<input id="wp" type="number" placeholder="Dato del caso"></label><label>Cantidad elegida<select id="mods"><option value="">Seleccionar</option><option>9</option><option>10</option><option>11</option></select></label><label>Potencia instalada final (kWp)<input id="finalkwp" type="number" step=".01" placeholder="Calcula"></label></div>
+<button class="btn" onclick="check3()">Comprobar</button><div id="fb3" class="feedback"></div>
+<div class="solution" id="sol3"><h3>Resolución didáctica</h3><p>Elegimos <b>10 módulos × 550 Wp = 5,50 kWp</b>. Redondear no es una regla automática: en un proyecto real debes comparar generación, espacio, objetivo del cliente, regulación y compatibilidad eléctrica.</p></div>
+</div></section>
+
+<section class="step" data-step="4"><div class="stephead"><div class="num">04</div><div><h2>Estima la generación simplificada</h2><p>Usa la potencia final del ejercicio.</p></div></div><div class="content">
+<div class="formula">Generación media ≈ 5,50 kWp × 130 kWh/kWp·mes</div>
+<div class="grid2"><label>Generación mensual estimada (kWh)<input id="genm" type="number" placeholder="Resultado"></label><label>Generación anual simplificada (kWh)<input id="gena" type="number" placeholder="Resultado"></label></div>
+<button class="btn" onclick="check4()">Comprobar</button><div id="fb4" class="feedback"></div>
+<div class="solution" id="sol4"><h3>Resolución</h3><p>5,50 × 130 = <b>715 kWh/mes</b>. En una simplificación anual: 715 × 12 = <b>8.580 kWh/año</b>. Una simulación real debe reflejar ubicación, geometría, pérdidas y estacionalidad.</p></div>
+</div></section>
+
+<section class="step" data-step="5"><div class="stephead"><div class="num">05</div><div><h2>Comprueba el espacio disponible</h2><p>Un cálculo energético solo sirve si la solución cabe y puede instalarse correctamente.</p></div></div><div class="content">
+<p>Para este ejercicio, considera un módulo conceptual de <b>2,28 m × 1,13 m</b>. Ignora separaciones y pasillos únicamente para calcular el área bruta de módulos; después identifica por qué eso no basta para un layout real.</p>
+<div class="grid2"><label>Área bruta de 10 módulos (m²)<input id="areamod" type="number" step=".1"></label><label>Área útil conceptual del techo (m²)<input id="areatecho" type="number" step=".1"></label></div>
+<label style="display:block;margin-top:12px">¿Qué falta validar antes de afirmar que caben?<textarea id="layout" placeholder="Escribe al menos dos puntos..."></textarea></label>
+<button class="btn" onclick="check5()">Comprobar</button><div id="fb5" class="feedback"></div>
+<div class="solution" id="sol5"><h3>Resolución</h3><p>Área bruta aproximada de módulos: 2,28 × 1,13 × 10 = <b>25,76 m²</b>. Área conceptual del techo: 7,8 × 6,0 = <b>46,8 m²</b>. Pero comparar áreas no demuestra que los módulos caben: faltan geometría real, orientación de montaje, obstáculos, bordes, accesos, estructura y dimensiones exactas.</p></div>
+</div></section>
+
+<section class="step" data-step="6"><div class="stephead"><div class="num">06</div><div><h2>Piensa como proyectista: inversor y strings</h2><p>Aquí la respuesta correcta es reconocer qué datos faltan.</p></div></div><div class="content">
+<p>Sabes que hay 10 módulos de 550 Wp, pero todavía no recibiste el datasheet del módulo ni del inversor.</p>
+<label>Selecciona la decisión técnicamente correcta<select id="inv"><option value="">Seleccionar</option><option value="a">Elegir cualquier inversor de 5 kW porque el sistema tiene 5,5 kWp</option><option value="b">Validar Voc, Vmp, Isc, Imp, temperatura, rango MPPT, tensión y corrientes máximas con datasheets reales</option><option value="c">Usar 10 módulos en un string sin hacer ninguna otra comprobación</option></select></label>
+<button class="btn" onclick="check6()">Comprobar</button><div id="fb6" class="feedback"></div>
+<div class="solution" id="sol6"><h3>Resolución</h3><p>La opción correcta es <b>validar todos los parámetros con datasheets reales</b>. La potencia nominal por sí sola no confirma compatibilidad eléctrica ni configuración de strings.</p></div>
+</div></section>
+
+<section class="step" data-step="7"><div class="stephead"><div class="num">07</div><div><h2>Identifica las validaciones de campo</h2><p>No inventes lo que la visita técnica todavía no confirmó.</p></div></div><div class="content">
+<div class="checks">
+<label class="check"><input type="checkbox" class="valid"> Orientación e inclinación reales</label><label class="check"><input type="checkbox" class="valid"> Sombras y obstáculos</label><label class="check"><input type="checkbox" class="valid"> Estado/compatibilidad de la cubierta</label><label class="check"><input type="checkbox" class="valid"> Tensión y condiciones de la instalación</label><label class="check"><input type="checkbox" class="valid"> Recorridos y ubicación del inversor</label><label class="check"><input type="checkbox" class="valid"> Distribuidora y reglas aplicables</label>
+</div><button class="btn" onclick="check7()">Comprobar</button><div id="fb7" class="feedback"></div>
+<div class="solution" id="sol7"><h3>Resolución</h3><p>Todos estos puntos deben confirmarse. Un dimensionamiento preliminar no reemplaza visita, ingeniería ni verificación regulatoria.</p></div>
+</div></section>
+
+<section class="step" data-step="8"><div class="stephead"><div class="num">08</div><div><h2>Monte el resumen de la propuesta</h2><p>Separa lo calculado de lo pendiente.</p></div></div><div class="content">
+<div class="grid2"><label>Potencia preliminar instalada<input id="propkwp" placeholder="Ej.: 5,50 kWp"></label><label>Cantidad y potencia de módulos<input id="propmods" placeholder="Ej.: 10 × 550 Wp"></label><label>Generación didáctica<input id="propgen" placeholder="Ej.: 715 kWh/mes"></label><label>Inversor<input id="propinv" placeholder="¿Confirmado o pendiente?"></label></div>
+<label style="display:block;margin-top:12px">Pendientes / condiciones<textarea id="proppend"></textarea></label>
+<button class="btn gold" onclick="check8()">Finalizar proyecto</button><div id="fb8" class="feedback"></div>
+<div class="solution" id="sol8"><h3>Ejemplo de resumen correcto</h3><p><b>Sistema preliminar:</b> 5,50 kWp · 10 módulos de 550 Wp · generación didáctica ≈715 kWh/mes. <b>Inversor:</b> pendiente de selección y validación con datasheets. <b>Pendientes:</b> visita técnica, layout definitivo, simulación local, diseño eléctrico y reglas de conexión de la distribuidora.</p></div>
+</div></section>
+
+<section class="result"><div class="resultgrid"><div><div class="eyebrow">RESULTADO</div><div class="score"><span id="score">0</span>/8</div><div>etapas resueltas correctamente</div></div><div><h2 id="resultTitle">Completa el proyecto</h2><p id="resultText">Cada etapa correcta será marcada aquí. Puedes volver a intentarlo y abrir la resolución cuando quieras.</p><div class="checks"><div class="check">✓ Cálculo energético</div><div class="check">✓ Dimensionamiento</div><div class="check">✓ Layout conceptual</div><div class="check">✓ Pensamiento técnico</div></div></div></div>
+<div class="actions"><button class="btn gold" onclick="showAll()">Ver todas las resoluciones</button><button class="btn light" onclick="window.print()">Imprimir / Guardar como PDF</button><button class="btn light" onclick="resetAll()">Reiniciar ejercicio</button></div></section>
+</main>
+<footer>Herramienta educativa · Manual Solar · Los valores del caso son didácticos y no sustituyen un proyecto técnico real.</footer>
+<script>
+let correct=new Set();
+function near(v,t,tol=.03){return Math.abs(Number(v)-t)<=tol}
+function feedback(n,ok,msg){const e=document.getElementById('fb'+n);e.className='feedback '+(ok?'ok':'bad');e.innerHTML=(ok?'✓ ':'✕ ')+msg;if(ok)correct.add(n);else correct.delete(n);update()}
+function update(){const n=correct.size;document.getElementById('score').textContent=n;document.getElementById('bar').style.width=(n/8*100)+'%';document.getElementById('pct').textContent=Math.round(n/8*100)+'%';const t=document.getElementById('resultTitle'),p=document.getElementById('resultText');if(n===8){t.textContent='Proyecto completado';p.textContent='Completaste las ocho etapas. El punto más importante es distinguir un cálculo preliminar de un proyecto validado.'}else if(n>=5){t.textContent='Vas muy bien';p.textContent='Revisa las etapas pendientes y compara tus decisiones con la resolución.'}else{t.textContent='Completa el proyecto';p.textContent='Cada etapa correcta será marcada aquí. Puedes volver a intentarlo y abrir la resolución cuando quieras.'}}
+function check1(){let ok=near(consumo.value,680,0.1)&&near(anual.value,8160,1);feedback(1,ok,ok?'Consumo y equivalente anual correctos.':'Revisa el dato mensual y multiplícalo por 12.')}
+function check2(){let ok=near(yield.value,130,.1)&&near(kwp.value,680/130,.03);feedback(2,ok,ok?'Potencia inicial correcta: aproximadamente 5,23 kWp.':'Usa 680 ÷ 130.')}
+function check3(){let ok=Number(wp.value)===550&&mods.value==='10'&&near(finalkwp.value,5.5,.01);feedback(3,ok,ok?'Configuración didáctica correcta: 10 módulos = 5,50 kWp.':'Para este ejercicio, compara 9,51 módulos teóricos y elige 10; luego calcula 10 × 550 Wp.')}
+function check4(){let ok=near(genm.value,715,.5)&&near(gena.value,8580,2);feedback(4,ok,ok?'Estimación simplificada correcta.':'Calcula 5,50 × 130 y después multiplica por 12.')}
+function check5(){let txt=layout.value.toLowerCase(),words=['obst','borde','acceso','dimension','orient','estructura','geometr','sombra'];let concepts=words.filter(w=>txt.includes(w)).length;let ok=near(areamod.value,25.764,0.15)&&near(areatecho.value,46.8,.1)&&concepts>=2;feedback(5,ok,ok?'Bien: calculaste las áreas y reconociste que el layout necesita más verificaciones.':'Revisa las dos áreas y menciona al menos dos factores de layout, como obstáculos, bordes, accesos, dimensiones, geometría u orientación.')}
+function check6(){let ok=inv.value==='b';feedback(6,ok,ok?'Correcto. La compatibilidad se valida con parámetros eléctricos y datasheets reales.':'La potencia nominal no basta para elegir inversor ni string.')}
+function check7(){let a=[...document.querySelectorAll('.valid')];let ok=a.every(x=>x.checked);feedback(7,ok,ok?'Correcto: todos estos datos deben verificarse.':'Marca todas las validaciones que todavía forman parte del proyecto real.')}
+function check8(){let vals=[propkwp.value,propmods.value,propgen.value,propinv.value,proppend.value].map(x=>x.trim());let invtxt=propinv.value.toLowerCase();let ok=vals.every(Boolean)&&(invtxt.includes('pend')||invtxt.includes('valid')||invtxt.includes('datasheet'));feedback(8,ok,ok?'Resumen completo. Has separado datos preliminares de las validaciones pendientes.':'Completa todos los campos y deja claro que el inversor todavía debe seleccionarse/validarse.');if(ok)document.getElementById('sol8').classList.add('show')}
+function showAll(){document.querySelectorAll('.solution').forEach(x=>x.classList.add('show'))}
+function resetAll(){if(confirm('¿Reiniciar todo el ejercicio?')){document.querySelectorAll('input,textarea').forEach(x=>{if(x.type==='checkbox')x.checked=false;else x.value=''});document.querySelectorAll('select').forEach(x=>x.value='');document.querySelectorAll('.feedback').forEach(x=>{x.className='feedback';x.innerHTML=''});document.querySelectorAll('.solution').forEach(x=>x.classList.remove('show'));correct.clear();update();window.scrollTo({top:0,behavior:'smooth'})}}
+update();
+</script>
+</body></html>

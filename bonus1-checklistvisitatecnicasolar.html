@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Checklist de Visita Técnica Solar</title>
+<style>
+:root{--navy:#082f4d;--blue:#116b9b;--gold:#f2b134;--bg:#eef4f7;--card:#fff;--ink:#20323d;--muted:#6a7d88;--line:#d8e4ea;--ok:#187454;--warn:#a76813}
+*{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink)}
+header{background:linear-gradient(135deg,#062943,#0c4d79);color:#fff;padding:42px 20px 55px}
+.wrap{max-width:1050px;margin:auto}.eyebrow{font-size:11px;letter-spacing:.16em;font-weight:800;color:#9ed7f2}
+h1{font-size:42px;line-height:1.05;margin:10px 0 12px}header p{max-width:720px;color:#d9eaf2;margin:0}
+.progress-wrap{background:#fff;border-radius:14px;padding:16px 18px;box-shadow:0 8px 30px #06294322;margin-top:-28px;position:sticky;top:10px;z-index:5}
+.progress-head{display:flex;justify-content:space-between;gap:15px;font-weight:700;color:var(--navy);font-size:13px}.bar{height:9px;background:#e6edf1;border-radius:20px;overflow:hidden;margin-top:10px}.bar i{display:block;height:100%;width:0;background:var(--gold);transition:.25s}
+main{padding:24px 20px 60px}.section{background:var(--card);border:1px solid var(--line);border-radius:16px;margin:16px 0;overflow:hidden;box-shadow:0 4px 18px #15374d0b}
+.section h2{margin:0;padding:18px 20px;background:#f8fbfc;color:var(--navy);font-size:20px;border-bottom:1px solid var(--line)}
+.content{padding:20px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+label.field{font-size:12px;font-weight:700;color:var(--navy);display:block}input,select,textarea{width:100%;margin-top:6px;padding:11px 12px;border:1px solid #bdccd5;border-radius:9px;font:inherit;background:#fff;color:var(--ink)}
+textarea{min-height:90px;resize:vertical}.checks{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+.check{border:1px solid var(--line);border-radius:10px;padding:11px;display:flex;gap:9px;align-items:flex-start;background:#fff}.check input{width:auto;margin:3px 0 0;accent-color:var(--ok)}
+.note{background:#fff8e8;border-left:4px solid var(--gold);padding:13px 15px;border-radius:9px;margin:14px 0;font-size:13px}
+.status{display:flex;gap:10px;flex-wrap:wrap}.status label{border:1px solid var(--line);padding:9px 12px;border-radius:9px;font-size:13px}.status input{width:auto;margin:0 6px 0 0}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.btn{border:0;border-radius:10px;padding:13px 17px;font-weight:800;cursor:pointer;background:var(--navy);color:#fff}.btn.gold{background:var(--gold);color:#142b39}.btn.light{background:#e6eef2;color:var(--navy)}
+.summary{background:var(--navy);color:#fff;border-radius:16px;padding:22px;margin-top:20px}.summary h2{color:#fff;margin-top:0}.summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.metric{background:#ffffff12;border:1px solid #ffffff20;padding:13px;border-radius:10px}.metric b{display:block;font-size:24px;color:var(--gold)}
+footer{text-align:center;color:var(--muted);font-size:11px;padding:20px}
+@media(max-width:700px){h1{font-size:34px}.grid,.grid3,.checks,.summary-grid{grid-template-columns:1fr}.progress-wrap{top:0;border-radius:0;margin-left:-20px;margin-right:-20px}.section{border-radius:12px}}
+@media print{body{background:#fff}.progress-wrap,.actions,footer{display:none}header{padding:25px;background:#fff!important;color:#082f4d;border-bottom:3px solid #f2b134}header p,.eyebrow{color:#667!important}.section{box-shadow:none;break-inside:avoid}.wrap{max-width:none}main{padding:10px 0}.summary{background:#fff!important;color:#082f4d;border:1px solid #ccc}.summary h2{color:#082f4d}.metric{border:1px solid #ddd}.metric b{color:#082f4d}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><div class="eyebrow">HERRAMIENTA PRÁCTICA · MANUAL SOLAR</div><h1>Checklist de Visita<br>Técnica Solar</h1><p>Registra la información del cliente, inspecciona el lugar y termina la visita con los datos necesarios para continuar el análisis del proyecto fotovoltaico.</p></div></header>
+<div class="wrap progress-wrap"><div class="progress-head"><span>Progreso de la visita</span><span id="pct">0% completado</span></div><div class="bar"><i id="bar"></i></div></div>
+<main class="wrap">
+<form id="form">
+<section class="section"><h2>01 · Datos del cliente</h2><div class="content grid">
+<label class="field">Nombre del cliente<input name="cliente"></label><label class="field">Fecha de la visita<input type="date" name="fecha"></label>
+<label class="field">Teléfono / WhatsApp<input name="telefono"></label><label class="field">Correo electrónico<input type="email" name="email"></label>
+<label class="field">Dirección del proyecto<input name="direccion"></label><label class="field">Ciudad / País<input name="ciudad"></label>
+<label class="field">Distribuidora eléctrica<input name="distribuidora"></label><label class="field">Responsable de la visita<input name="responsable"></label>
+</div></section>
+
+<section class="section"><h2>02 · Consumo y suministro eléctrico</h2><div class="content">
+<div class="grid3"><label class="field">Consumo medio mensual (kWh)<input type="number" min="0" step="0.01" name="consumo"></label><label class="field">Consumo anual (kWh)<input type="number" min="0" step="0.01" name="anual"></label><label class="field">Tensión del suministro<input name="tension" placeholder="Ej.: 220 V"></label></div>
+<div class="checks" style="margin-top:14px">
+<label class="check"><input type="checkbox">Factura eléctrica fotografiada o guardada</label><label class="check"><input type="checkbox">Histórico de 12 meses disponible</label>
+<label class="check"><input type="checkbox">Medidor identificado</label><label class="check"><input type="checkbox">Tipo/tarifa del suministro registrada</label>
+<label class="check"><input type="checkbox">Cuadro eléctrico localizado</label><label class="check"><input type="checkbox">Cambios futuros de consumo preguntados</label>
+</div><label class="field" style="margin-top:14px">Observaciones sobre consumo<textarea name="obs_consumo" placeholder="Nuevas cargas, aire acondicionado, vehículo eléctrico, ampliaciones..."></textarea></label>
+</div></section>
+
+<section class="section"><h2>03 · Cubierta y área disponible</h2><div class="content">
+<div class="grid3"><label class="field">Tipo de cubierta<select name="cubierta"><option value="">Seleccionar</option><option>Teja cerámica</option><option>Fibrocemento</option><option>Metálica</option><option>Losa</option><option>Suelo / estructura independiente</option><option>Otro</option></select></label>
+<label class="field">Largo útil aproximado (m)<input type="number" step=".01" name="largo"></label><label class="field">Ancho útil aproximado (m)<input type="number" step=".01" name="ancho"></label>
+<label class="field">Orientación / azimut<input name="orientacion"></label><label class="field">Inclinación aproximada<input name="inclinacion"></label><label class="field">Altura / acceso<input name="altura"></label></div>
+<div class="checks" style="margin-top:14px"><label class="check"><input type="checkbox">Estado aparente de la cubierta registrado</label><label class="check"><input type="checkbox">Medidas útiles tomadas</label><label class="check"><input type="checkbox">Obstáculos identificados</label><label class="check"><input type="checkbox">Zonas de acceso consideradas</label><label class="check"><input type="checkbox">Fotografías generales tomadas</label><label class="check"><input type="checkbox">Posibles áreas para módulos identificadas</label></div>
+<label class="field" style="margin-top:14px">Obstáculos / restricciones<textarea name="obstaculos" placeholder="Chimeneas, cajas de agua, antenas, bordes, áreas no utilizables..."></textarea></label>
+</div></section>
+
+<section class="section"><h2>04 · Sombras y entorno</h2><div class="content">
+<div class="checks"><label class="check"><input type="checkbox">Árboles próximos verificados</label><label class="check"><input type="checkbox">Edificios o muros próximos verificados</label><label class="check"><input type="checkbox">Antenas / chimeneas verificadas</label><label class="check"><input type="checkbox">Horizonte fotografiado</label><label class="check"><input type="checkbox">Sombras visibles registradas</label><label class="check"><input type="checkbox">Necesidad de estudio adicional indicada</label></div>
+<div class="note"><b>Importante:</b> una visita puntual no muestra necesariamente todas las sombras del año. Cuando sea relevante, completa el análisis con herramientas apropiadas de modelado/sombreado.</div>
+<label class="field">Observaciones de sombreado<textarea name="sombras"></textarea></label>
+</div></section>
+
+<section class="section"><h2>05 · Instalación eléctrica y recorrido</h2><div class="content">
+<div class="grid"><label class="field">Ubicación posible del inversor<input name="inversor"></label><label class="field">Recorrido aproximado de cables<input name="recorrido"></label></div>
+<div class="checks" style="margin-top:14px"><label class="check"><input type="checkbox">Cuadro eléctrico fotografiado</label><label class="check"><input type="checkbox">Medidor fotografiado</label><label class="check"><input type="checkbox">Puesta a tierra verificada por personal competente</label><label class="check"><input type="checkbox">Ruta CC preliminar identificada</label><label class="check"><input type="checkbox">Ruta CA preliminar identificada</label><label class="check"><input type="checkbox">Lugar del inversor protegido y accesible</label></div>
+<div class="note"><b>Seguridad:</b> no abras tableros, no midas circuitos energizados ni accedas a cubiertas sin capacitación, procedimiento y protección adecuados. La herramienta no sustituye proyecto eléctrico ni responsabilidad profesional exigida localmente.</div>
+<label class="field">Observaciones eléctricas<textarea name="obs_eletrica"></textarea></label>
+</div></section>
+
+<section class="section"><h2>06 · Logística, acceso y seguridad</h2><div class="content checks">
+<label class="check"><input type="checkbox">Acceso de equipos evaluado</label><label class="check"><input type="checkbox">Necesidad de andamio/plataforma evaluada</label><label class="check"><input type="checkbox">Riesgos de caída identificados</label><label class="check"><input type="checkbox">Área de trabajo disponible</label><label class="check"><input type="checkbox">Restricciones de horario/acceso registradas</label><label class="check"><input type="checkbox">Condiciones especiales informadas</label>
+</div></section>
+
+<section class="section"><h2>07 · Registro fotográfico</h2><div class="content">
+<div class="checks"><label class="check"><input type="checkbox">Fachada / identificación</label><label class="check"><input type="checkbox">Vista general de la cubierta</label><label class="check"><input type="checkbox">Cada área candidata</label><label class="check"><input type="checkbox">Obstáculos</label><label class="check"><input type="checkbox">Medidor</label><label class="check"><input type="checkbox">Cuadro eléctrico</label><label class="check"><input type="checkbox">Posible lugar del inversor</label><label class="check"><input type="checkbox">Recorridos posibles</label></div>
+<label class="field" style="margin-top:14px">Enlace/carpeta de las fotografías<input name="fotos" placeholder="Opcional"></label>
+</div></section>
+
+<section class="section"><h2>08 · Cierre de la visita</h2><div class="content">
+<div class="status"><label><input type="radio" name="estado" value="Datos suficientes">Datos suficientes</label><label><input type="radio" name="estado" value="Requiere información adicional">Requiere información adicional</label><label><input type="radio" name="estado" value="Requiere nueva visita">Requiere nueva visita</label></div>
+<label class="field" style="margin-top:15px">Pendientes antes de dimensionar<textarea name="pendientes" placeholder="Datos que todavía deben confirmarse..."></textarea></label>
+<label class="field">Observaciones finales<textarea name="final"></textarea></label>
+</div></section>
+
+<div class="summary"><h2>Resumen automático</h2><div class="summary-grid"><div class="metric"><b id="done">0</b>ítems marcados</div><div class="metric"><b id="total">0</b>ítems de control</div><div class="metric"><b id="area">—</b>m² aprox. informados</div><div class="metric"><b id="state">Pendiente</b>estado de la visita</div></div></div>
+
+<div class="actions"><button type="button" class="btn gold" onclick="window.print()">Imprimir / Guardar como PDF</button><button type="button" class="btn" id="save">Guardar en este dispositivo</button><button type="button" class="btn light" id="clear">Limpiar ficha</button></div>
+</form>
+</main>
+<footer>Herramienta educativa · Manual Solar · Los requisitos técnicos y regulatorios deben verificarse para cada proyecto y jurisdicción.</footer>
+
+<script>
+const form=document.getElementById('form'), checks=[...form.querySelectorAll('input[type=checkbox]')];
+const fields=[...form.querySelectorAll('input:not([type=checkbox]):not([type=radio]),select,textarea')];
+const radios=[...form.querySelectorAll('input[type=radio]')];
+function update(){
+ const done=checks.filter(x=>x.checked).length;
+ const filled=fields.filter(x=>String(x.value).trim()).length;
+ const radioDone=radios.some(x=>x.checked)?1:0;
+ const max=checks.length+fields.length+1, score=done+filled+radioDone;
+ const pct=Math.round(score/max*100);
+ document.getElementById('bar').style.width=pct+'%'; document.getElementById('pct').textContent=pct+'% completado';
+ document.getElementById('done').textContent=done; document.getElementById('total').textContent=checks.length;
+ const l=parseFloat(form.elements.largo.value), a=parseFloat(form.elements.ancho.value);
+ document.getElementById('area').textContent=(l>0&&a>0)?(l*a).toFixed(1):'—';
+ const st=radios.find(x=>x.checked); document.getElementById('state').textContent=st?st.value:'Pendiente';
+}
+function serialize(){
+ const d={fields:{},checks:checks.map(x=>x.checked),radio:null};
+ fields.forEach(x=>d.fields[x.name]=x.value); const r=radios.find(x=>x.checked); if(r)d.radio=r.value; return d;
+}
+function restore(){
+ try{const d=JSON.parse(localStorage.getItem('manualSolarChecklist')||'null');if(!d)return;
+ fields.forEach(x=>{if(d.fields&&d.fields[x.name]!=null)x.value=d.fields[x.name]});
+ checks.forEach((x,i)=>x.checked=!!d.checks?.[i]); radios.forEach(x=>x.checked=x.value===d.radio); update();
+ }catch(e){}
+}
+form.addEventListener('input',update); form.addEventListener('change',update);
+document.getElementById('save').onclick=()=>{localStorage.setItem('manualSolarChecklist',JSON.stringify(serialize()));alert('Ficha guardada en este dispositivo.');};
+document.getElementById('clear').onclick=()=>{if(confirm('¿Quieres borrar todos los datos de esta ficha?')){form.reset();localStorage.removeItem('manualSolarChecklist');update();}};
+document.getElementById('total').textContent=checks.length; restore(); update();
+</script>
+</body></html>

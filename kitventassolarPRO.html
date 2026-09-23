@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kit Ventas Solar PRO</title>
+<style>
+:root{--navy:#082f4d;--navy2:#05273f;--blue:#126d9d;--gold:#f2b134;--bg:#edf3f6;--card:#fff;--ink:#20323d;--muted:#687c88;--line:#d7e3e9;--green:#187454;--soft:#f7fafb}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}.wrap{max-width:1100px;margin:auto}
+.hero{background:linear-gradient(135deg,var(--navy2),#0c4d79);color:#fff;padding:44px 20px 58px}.eyebrow{font-size:10px;letter-spacing:.16em;font-weight:900;color:#9ed7f2}.hero h1{font-size:43px;line-height:1.04;margin:9px 0 12px}.hero h1 span{color:var(--gold)}.hero p{max-width:760px;color:#d9eaf2;margin:0}
+.toolbar{margin:-25px 20px 0;background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px;box-shadow:0 8px 28px #06294322;display:grid;grid-template-columns:1fr auto;gap:10px;position:sticky;top:8px;z-index:10}.search{padding:11px 13px;border:1px solid #bdccd5;border-radius:9px;font:inherit}.counter{display:flex;align-items:center;color:var(--muted);font-size:12px;padding:0 8px}
+main{padding:23px 20px 60px}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:5px 0 18px}.tab{border:1px solid #cbd9e0;background:#fff;color:var(--navy);padding:8px 12px;border-radius:20px;font-weight:800;font-size:12px;cursor:pointer}.tab.active{background:var(--navy);color:#fff}
+.intro{background:#fff;border:1px solid var(--line);border-radius:15px;padding:18px;margin-bottom:15px}.intro h2{color:var(--navy);margin:0 0 5px;font-size:20px}.intro p{font-size:13px;color:var(--muted);margin:0}.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-top:14px}.flow div{background:#f5f9fb;border-radius:8px;padding:9px;text-align:center;font-size:10px;font-weight:900;color:var(--navy)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.card{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}.head{padding:15px 16px;border-bottom:1px solid var(--line);background:#f8fbfc}.tag{font-size:9px;letter-spacing:.12em;text-transform:uppercase;font-weight:900;color:var(--blue)}.head h3{margin:3px 0 0;color:var(--navy);font-size:17px}.body{padding:15px}.when{font-size:11px;color:var(--muted);margin-bottom:9px}.script{background:#f6f9fb;border:1px solid #e0e9ed;border-radius:9px;padding:12px;font-size:13px;white-space:pre-line}.actions{display:flex;gap:7px;margin-top:10px}.btn{border:0;border-radius:8px;padding:9px 11px;font-weight:900;cursor:pointer;background:var(--navy);color:#fff;font-size:11px}.btn.copy{background:var(--gold);color:#17303e}.tip{font-size:11px;background:#fff8e8;border-left:3px solid var(--gold);padding:9px;border-radius:7px;margin-top:10px}
+.objection{border-left:4px solid var(--blue)}.question{font-weight:900;color:var(--navy);margin-bottom:8px}.builder{background:linear-gradient(135deg,var(--navy2),#0c4d79);color:#fff;border-radius:16px;padding:21px;margin-top:20px}.builder h2{margin:0 0 5px}.builder>p{color:#d8e9f1;font-size:12px;margin-top:0}.buildergrid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.builder label{font-size:10px;font-weight:900;color:#b9dceb}.builder input,.builder select{width:100%;margin-top:5px;padding:10px;border:1px solid #ffffff35;border-radius:8px;background:#ffffff10;color:#fff}.builder option{color:#111}.output{background:#fff;color:var(--ink);border-radius:10px;padding:13px;margin-top:12px;white-space:pre-line;font-size:13px}.goldbtn{background:var(--gold);color:#17303e;border:0;border-radius:8px;padding:10px 13px;font-weight:900;cursor:pointer;margin-top:10px}
+footer{text-align:center;color:var(--muted);font-size:11px;padding:20px}
+@media(max-width:750px){.hero h1{font-size:35px}.grid,.buildergrid,.flow{grid-template-columns:1fr}.toolbar{grid-template-columns:1fr;margin-left:0;margin-right:0;top:0;border-radius:0}}
+@media print{.hero,.toolbar,.tabs,.actions,.builder,footer{display:none}.grid{display:block}.card{break-inside:avoid;margin-bottom:10px}.intro{break-inside:avoid}}
+</style>
+</head>
+<body>
+<section class="hero"><div class="wrap"><div class="eyebrow">HERRAMIENTA PREMIUM · MANUAL SOLAR</div><h1>Kit <span>Ventas Solar</span> PRO</h1><p>Guiones, preguntas, seguimiento y respuestas a objeciones para conducir una conversación comercial solar sin sonar como un mensaje automático.</p></div></section>
+<div class="wrap toolbar"><input id="search" class="search" placeholder="Buscar: precio, seguimiento, propuesta, ahorro..."><div class="counter"><span id="count">0</span>&nbsp;recursos</div></div>
+<main class="wrap">
+<div class="tabs"><button class="tab active" data-cat="all">Todo</button><button class="tab" data-cat="contacto">Primer contacto</button><button class="tab" data-cat="diagnostico">Diagnóstico</button><button class="tab" data-cat="propuesta">Propuesta</button><button class="tab" data-cat="followup">Seguimiento</button><button class="tab" data-cat="objecion">Objeciones</button></div>
+<section class="intro"><h2>La venta empieza por diagnosticar</h2><p>No envíes precio antes de entender el cliente. Usa las preguntas para descubrir consumo, objetivo, inmueble, decisión y momento de compra. Después adapta el mensaje.</p><div class="flow"><div>1 · CONTACTO</div><div>2 · DIAGNÓSTICO</div><div>3 · PROPUESTA</div><div>4 · SEGUIMIENTO</div><div>5 · DECISIÓN</div></div></section>
+<div class="grid" id="cards">
+
+<article class="card item" data-cat="contacto" data-key="primer contacto whatsapp lead interesado"><div class="head"><div class="tag">Primer contacto</div><h3>Lead que pidió información</h3></div><div class="body"><div class="when">Objetivo: abrir conversación sin enviar un texto enorme.</div><div class="script">Hola, [Nombre]. Soy [Asesor] de [Empresa]. Vi que solicitaste información sobre energía solar.
+
+Para calcular algo que tenga sentido para tu caso, ¿me dices aproximadamente cuánto pagas o consumes de energía al mes?</div><div class="actions"><button class="btn copy">Copiar mensaje</button></div></div></article>
+
+<article class="card item" data-cat="contacto" data-key="retomar lead no respondio contato"><div class="head"><div class="tag">Primer contacto</div><h3>No respondió al primer mensaje</h3></div><div class="body"><div class="when">Objetivo: retomar sin presión.</div><div class="script">Hola, [Nombre]. Paso por aquí porque vi que habías pedido información sobre el proyecto solar.
+
+Si todavía quieres analizarlo, envíame una foto de tu factura de energía y te digo qué datos necesitamos para hacer una estimación inicial.</div><div class="actions"><button class="btn copy">Copiar mensaje</button></div></div></article>
+
+<article class="card item" data-cat="diagnostico" data-key="preguntas calificacion consumo factura inmueble techo ciudad"><div class="head"><div class="tag">Diagnóstico</div><h3>Preguntas esenciales</h3></div><div class="body"><div class="script">1. ¿Cuál es tu consumo medio o valor aproximado de la factura?
+2. ¿En qué ciudad está el inmueble?
+3. ¿Es vivienda, comercio, industria u otro tipo de instalación?
+4. ¿El inmueble es propio?
+5. ¿Tienes una factura reciente y, si es posible, el histórico de consumo?
+6. ¿Esperas aumentar el consumo próximamente?
+7. ¿Qué buscas principalmente con el proyecto solar?</div><div class="tip">No es necesario disparar las siete preguntas de una vez. Conduce una conversación.</div><div class="actions"><button class="btn copy">Copiar preguntas</button></div></div></article>
+
+<article class="card item" data-cat="diagnostico" data-key="descobrir objetivo economia investimento cliente"><div class="head"><div class="tag">Diagnóstico</div><h3>Descubrir el objetivo real</h3></div><div class="body"><div class="script">Perfecto. Y para entender mejor tu prioridad: ¿estás buscando principalmente reducir el gasto mensual de energía, protegerte de aumentos futuros, aprovechar mejor el inmueble o tienes otro objetivo?</div><div class="actions"><button class="btn copy">Copiar mensaje</button></div></div></article>
+
+<article class="card item" data-cat="propuesta" data-key="enviar proposta orçamento presupuesto"><div class="head"><div class="tag">Propuesta</div><h3>Mensaje para enviar la propuesta</h3></div><div class="body"><div class="script">[Nombre], preparé la propuesta con base en los datos que me enviaste.
+
+Te la mando aquí para que puedas revisarla con calma. En ella están la configuración propuesta, la estimación de generación, el alcance y las condiciones comerciales.
+
+Cuando la veas, dime qué punto quieres que te explique primero.</div><div class="actions"><button class="btn copy">Copiar mensaje</button></div></div></article>
+
+<article class="card item" data-cat="propuesta" data-key="comparando outros orçamentos concorrencia proposta"><div class="head"><div class="tag">Propuesta</div><h3>Cliente está comparando propuestas</h3></div><div class="body"><div class="script">Es totalmente normal comparar antes de decidir.
+
+Si recibes otra propuesta y quieres enviármela, puedo ayudarte a comparar la configuración, los equipos, el alcance y las condiciones. Así no terminas comparando solo el precio final.</div><div class="actions"><button class="btn copy">Copiar mensaje</button></div></div></article>
+
+<article class="card item" data-cat="followup" data-key="follow up 1 proposta seguimiento"><div class="head"><div class="tag">Seguimiento</div><h3>Follow-up 1 · después de la propuesta</h3></div><div class="body"><div class="script">Hola, [Nombre]. ¿Pudiste revisar la propuesta que te envié?
+
+Si surgió alguna duda sobre el sistema, los equipos o las condiciones, me la puedes mandar por aquí y la revisamos.</div><div class="actions"><button class="btn copy">Copiar mensaje</button></div></div></article>
+
+<article class="card item" data-cat="followup" data-key="follow up 2 decisão orçamento"><div class="head"><div class="tag">Seguimiento</div><h3>Follow-up 2 · sin respuesta</h3></div><div class="body"><div class="script">Hola, [Nombre]. Solo quería saber si el proyecto solar sigue en tus planes o si prefieres retomarlo más adelante.
+
+Así sé si dejo tu propuesta activa por ahora.</div><div class="actions"><button class="btn copy">Copiar mensaje</button></div></div></article>
+
+<article class="card item" data-cat="followup" data-key="follow up fechar arquivo ultima mensagem"><div class="head"><div class="tag">Seguimiento</div><h3>Follow-up final</h3></div><div class="body"><div class="script">[Nombre], voy a cerrar el seguimiento de esta propuesta para no llenarte de mensajes.
+
+Si más adelante decides retomar el proyecto, escríbeme por aquí y revisamos nuevamente los datos y las condiciones vigentes.</div><div class="actions"><button class="btn copy">Copiar mensaje</button></div></div></article>
+
+<article class="card item objection" data-cat="objecion" data-key="caro preço precio objecion"><div class="head"><div class="tag">Objeción</div><h3>“Está caro”</h3></div><div class="body"><div class="question">Primero descubre qué está comparando.</div><div class="script">Entiendo. Cuando dices que está caro, ¿lo comparas con otra propuesta solar o con el valor que imaginabas invertir?
+
+Si tienes otra propuesta, podemos comparar equipos, potencia, generación estimada, garantías y alcance antes de mirar solo la diferencia de precio.</div><div class="actions"><button class="btn copy">Copiar respuesta</button></div></div></article>
+
+<article class="card item objection" data-cat="objecion" data-key="pensar vou pensar objecion"><div class="head"><div class="tag">Objeción</div><h3>“Voy a pensarlo”</h3></div><div class="body"><div class="script">Claro. Para no insistir sin necesidad, ¿hay algún punto específico que todavía te genera duda: la inversión, la configuración, el retorno esperado o el momento de hacer el proyecto?</div><div class="tip">El objetivo no es impedir que el cliente piense. Es descubrir si existe una duda concreta que puedas aclarar.</div><div class="actions"><button class="btn copy">Copiar respuesta</button></div></div></article>
+
+<article class="card item objection" data-cat="objecion" data-key="outra proposta barata concorrente menor preço"><div class="head"><div class="tag">Objeción</div><h3>“Tengo una propuesta más barata”</h3></div><div class="body"><div class="script">Puede ser una buena opción. Antes de decidir, te recomiendo comprobar si las dos propuestas realmente incluyen lo mismo.
+
+Si quieres, envíame la otra y revisamos juntos potencia instalada, módulos, inversor, generación estimada, estructura, protecciones, garantías, instalación y lo que queda fuera del alcance.</div><div class="actions"><button class="btn copy">Copiar respuesta</button></div></div></article>
+
+<article class="card item objection" data-cat="objecion" data-key="economia garantia conta zero factura cero promesa"><div class="head"><div class="tag">Objeción / expectativa</div><h3>“¿Mi factura va a quedar en cero?”</h3></div><div class="body"><div class="script">No te prometería eso sin revisar las reglas de tu distribuidora y la estructura de tu factura.
+
+Podemos estimar cuánto puede generar el sistema, pero cargos mínimos, impuestos, tarifas y compensación de energía dependen de las reglas aplicables en tu ubicación.</div><div class="actions"><button class="btn copy">Copiar respuesta</button></div></div></article>
+
+<article class="card item objection" data-cat="objecion" data-key="retorno payback investimento anos"><div class="head"><div class="tag">Objeción / análisis</div><h3>“¿En cuántos años se paga?”</h3></div><div class="body"><div class="script">Podemos hacer una estimación, pero prefiero no darte un número sin los datos.
+
+Para calcularlo necesitamos al menos inversión, generación esperada, tarifa aplicable, reglas de compensación y supuestos claros sobre cómo esos valores pueden cambiar con el tiempo.</div><div class="actions"><button class="btn copy">Copiar respuesta</button></div></div></article>
+
+</div>
+
+<section class="builder"><h2>Generador rápido de mensaje</h2><p>Personaliza uno de los mensajes principales antes de copiarlo.</p><div class="buildergrid"><label>Nombre del cliente<input id="bName" placeholder="Ej.: Carlos"></label><label>Tu nombre<input id="bSeller" placeholder="Ej.: Ana"></label><label>Empresa<input id="bCompany" placeholder="Ej.: SolarPro"></label><label>Momento<select id="bType"><option value="contact">Primer contacto</option><option value="proposal">Envío de propuesta</option><option value="follow">Seguimiento</option><option value="final">Último seguimiento</option></select></label></div><button class="goldbtn" onclick="build()">Generar mensaje</button><div class="output" id="output">Completa los datos y genera el mensaje.</div><button class="goldbtn" onclick="copyOutput()">Copiar mensaje</button></section>
+</main>
+<footer>Kit Ventas Solar PRO · Adapta los guiones a cada cliente. No prometas ahorros, producción, retorno o condiciones regulatorias sin datos y validación.</footer>
+<script>
+const items=[...document.querySelectorAll('.item')], tabs=[...document.querySelectorAll('.tab')], search=document.getElementById('search');let cat='all';
+function filter(){let q=search.value.toLowerCase().trim(),n=0;items.forEach(i=>{let ok=(cat==='all'||i.dataset.cat===cat)&&(!q||(i.dataset.key+' '+i.innerText).toLowerCase().includes(q));i.style.display=ok?'':'none';if(ok)n++});document.getElementById('count').textContent=n}
+tabs.forEach(t=>t.onclick=()=>{tabs.forEach(x=>x.classList.remove('active'));t.classList.add('active');cat=t.dataset.cat;filter()});search.oninput=filter;
+document.querySelectorAll('.copy').forEach(b=>b.onclick=async()=>{let s=b.closest('.body').querySelector('.script').innerText;try{await navigator.clipboard.writeText(s);let old=b.textContent;b.textContent='¡Copiado!';setTimeout(()=>b.textContent=old,1200)}catch(e){alert('Selecciona y copia el texto manualmente.')}});
+function build(){let n=document.getElementById('bName').value.trim()||'[Nombre]',s=document.getElementById('bSeller').value.trim()||'[Asesor]',c=document.getElementById('bCompany').value.trim()||'[Empresa]',t=document.getElementById('bType').value,m='';
+if(t==='contact')m=`Hola, ${n}. Soy ${s} de ${c}. Vi que solicitaste información sobre energía solar.\n\nPara calcular algo que tenga sentido para tu caso, ¿me dices aproximadamente cuánto pagas o consumes de energía al mes?`;
+if(t==='proposal')m=`${n}, preparé la propuesta con base en los datos que me enviaste.\n\nTe la mando aquí para que puedas revisarla con calma. Cuando la veas, dime qué punto quieres que te explique primero.`;
+if(t==='follow')m=`Hola, ${n}. ¿Pudiste revisar la propuesta que te envié?\n\nSi surgió alguna duda sobre el sistema, los equipos o las condiciones, me la puedes mandar por aquí y la revisamos.`;
+if(t==='final')m=`${n}, voy a cerrar el seguimiento de esta propuesta para no llenarte de mensajes.\n\nSi más adelante decides retomar el proyecto, escríbeme por aquí y revisamos nuevamente los datos y las condiciones vigentes.`;
+document.getElementById('output').textContent=m}
+async function copyOutput(){try{await navigator.clipboard.writeText(document.getElementById('output').innerText);alert('Mensaje copiado.')}catch(e){alert('Selecciona y copia el texto manualmente.')}}
+filter();
+</script>
+</body></html>

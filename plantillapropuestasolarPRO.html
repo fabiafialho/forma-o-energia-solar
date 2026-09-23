@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Generador de Propuesta Solar PRO</title>
+<style>
+:root{--navy:#082f4d;--navy2:#05273f;--blue:#126d9d;--gold:#f2b134;--bg:#edf3f6;--card:#fff;--ink:#20323d;--muted:#687c88;--line:#d7e3e9;--green:#187454;--soft:#f7fafb}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}.wrap{max-width:1180px;margin:auto}
+.hero{background:linear-gradient(135deg,var(--navy2),#0c4d79);color:#fff;padding:38px 20px 52px}.eyebrow{font-size:10px;letter-spacing:.16em;font-weight:900;color:#9ed7f2}.hero h1{font-size:39px;margin:8px 0 10px;line-height:1.05}.hero p{max-width:760px;color:#d9eaf2;margin:0}
+main{padding:20px}.layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:16px;align-items:start}.formbox,.proposal{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 5px 20px #15374d0d}.formbox h2{margin:0;padding:16px 18px;background:#f8fbfc;border-bottom:1px solid var(--line);color:var(--navy);font-size:18px}.formcontent{padding:18px}.sect{font-size:10px;letter-spacing:.13em;color:var(--blue);font-weight:900;text-transform:uppercase;margin:17px 0 9px}.sect:first-child{margin-top:0}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}label{font-size:11px;font-weight:800;color:var(--navy)}input,textarea,select{width:100%;margin-top:5px;padding:10px;border:1px solid #bdccd5;border-radius:8px;font:inherit;color:var(--ink);background:#fff}textarea{min-height:75px;resize:vertical}.buttons{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.btn{border:0;border-radius:9px;padding:11px 14px;font-weight:900;cursor:pointer;background:var(--navy);color:#fff}.btn.gold{background:var(--gold);color:#1b3240}.btn.light{background:#e5eef2;color:var(--navy)}
+.proposal{position:sticky;top:10px}.cover{background:linear-gradient(135deg,var(--navy2),#0c4d79);color:#fff;padding:28px}.brand{display:flex;justify-content:space-between;gap:15px;align-items:flex-start}.logo{font-weight:900;font-size:20px}.logo span{color:var(--gold)}.docno{font-size:10px;color:#b8d9e9;text-align:right}.cover h2{font-size:30px;line-height:1.05;margin:35px 0 8px}.cover p{margin:0;color:#dcebf2;font-size:13px}.clientline{margin-top:28px;padding-top:15px;border-top:1px solid #ffffff2b;display:grid;grid-template-columns:1fr 1fr;gap:15px;font-size:12px}
+.pbody{padding:24px}.intro{font-size:13px;color:#526772}.highlights{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:18px 0}.hi{background:#f4f8fa;border:1px solid var(--line);border-radius:10px;padding:11px}.hi span{display:block;font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:900}.hi b{display:block;color:var(--navy);font-size:17px;margin-top:3px}.title{font-size:15px;color:var(--navy);border-bottom:2px solid var(--gold);padding-bottom:6px;margin:22px 0 10px}.equipment{width:100%;border-collapse:collapse;font-size:12px}.equipment td{padding:8px;border-bottom:1px solid #e5ecef}.equipment td:first-child{color:var(--muted);width:38%}.equipment td:last-child{font-weight:800;color:var(--navy)}.pricebox{display:grid;grid-template-columns:1fr auto;gap:15px;align-items:center;background:var(--navy);color:#fff;border-radius:12px;padding:17px;margin-top:16px}.pricebox small{color:#bcd9e7}.price{font-size:28px;font-weight:900;color:var(--gold);white-space:nowrap}.conditions{display:grid;grid-template-columns:1fr 1fr;gap:9px}.cond{border:1px solid var(--line);border-radius:9px;padding:10px;font-size:11px}.cond b{display:block;color:var(--navy)}.note{font-size:10px;color:var(--muted);margin-top:18px;padding-top:12px;border-top:1px solid var(--line)}.signature{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:35px}.sig{border-top:1px solid #8da0aa;padding-top:6px;font-size:10px;color:var(--muted);text-align:center}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.proposal{position:static}}@media(max-width:600px){.grid2,.grid3,.highlights,.conditions,.clientline{grid-template-columns:1fr}.brand{display:block}.docno{text-align:left;margin-top:8px}.pricebox{grid-template-columns:1fr}}
+@media print{@page{size:A4;margin:8mm}body{background:#fff}.hero,.formbox{display:none}main{padding:0}.layout{display:block}.proposal{box-shadow:none;border:0;position:static}.cover{-webkit-print-color-adjust:exact;print-color-adjust:exact}.pricebox{-webkit-print-color-adjust:exact;print-color-adjust:exact}.pbody{padding:18px}.note{font-size:9px}}
+</style>
+</head>
+<body>
+<section class="hero"><div class="wrap"><div class="eyebrow">HERRAMIENTA PREMIUM · MANUAL SOLAR</div><h1>Generador de Propuesta Solar PRO</h1><p>Completa los datos y genera una propuesta comercial limpia, profesional y lista para imprimir o guardar como PDF.</p></div></section>
+<main class="wrap"><div class="layout">
+<section class="formbox"><h2>Completa la propuesta</h2><div class="formcontent">
+<div class="sect">Tu empresa</div><div class="grid2"><label>Nombre comercial<input id="empresa" value="SolarPro Energía"></label><label>Asesor / responsable<input id="asesor" placeholder="Nombre"></label><label>Teléfono / WhatsApp<input id="telefono"></label><label>Correo electrónico<input id="email"></label></div>
+<div class="sect">Cliente</div><div class="grid2"><label>Nombre del cliente<input id="cliente" placeholder="Cliente"></label><label>Ciudad / ubicación<input id="ciudad"></label><label>Fecha<input id="fecha" type="date"></label><label>Validez (días)<input id="validez" type="number" value="10" min="1"></label></div>
+<div class="sect">Sistema propuesto</div><div class="grid3"><label>Potencia (kWp)<input id="kwp" type="number" step=".01" value="5.50"></label><label>Nº módulos<input id="mods" type="number" value="10"></label><label>Potencia módulo (Wp)<input id="wp" type="number" value="550"></label></div>
+<div class="grid2" style="margin-top:10px"><label>Marca/modelo módulos<input id="modulo" placeholder="Ej.: Marca + modelo"></label><label>Inversor<input id="inversor" placeholder="Marca / modelo / potencia"></label><label>Generación estimada mensual (kWh)<input id="genm" type="number" value="715"></label><label>Generación estimada anual (kWh)<input id="gena" type="number" value="8580"></label></div>
+<div class="sect">Oferta comercial</div><div class="grid2"><label>Valor total<input id="valor" type="number" step=".01" placeholder="Ej.: 10000"></label><label>Moneda / símbolo<input id="moeda" value="$"></label><label>Forma de pago<input id="pago" placeholder="Ej.: 50% + 50%"></label><label>Plazo estimado<input id="plazo" placeholder="Ej.: 30 días después de..."></label></div>
+<label style="display:block;margin-top:10px">Qué incluye<textarea id="incluye">Módulos fotovoltaicos
+Inversor
+Estructura de montaje
+Material eléctrico previsto en la propuesta
+Instalación y puesta en marcha según alcance contratado</textarea></label>
+<label style="display:block;margin-top:10px">Observaciones / condiciones<textarea id="obs" placeholder="Garantías, exclusiones, condiciones de instalación, trámites..."></textarea></label>
+<div class="buttons"><button class="btn gold" onclick="render()">Actualizar propuesta</button><button class="btn" onclick="save()">Guardar datos</button><button class="btn light" onclick="window.print()">Imprimir / Guardar PDF</button><button class="btn light" onclick="clearData()">Limpiar</button></div>
+</div></section>
+
+<section class="proposal" id="proposal">
+<div class="cover"><div class="brand"><div class="logo" id="pEmpresa">SolarPro <span>Energía</span></div><div class="docno">PROPUESTA FOTOVOLTAICA<br><span id="pDate">—</span></div></div><h2>Tu proyecto de<br>energía solar</h2><p>Propuesta preliminar de suministro e instalación de sistema fotovoltaico.</p><div class="clientline"><div><small>PREPARADA PARA</small><br><b id="pCliente">Cliente</b></div><div><small>UBICACIÓN</small><br><b id="pCiudad">—</b></div></div></div>
+<div class="pbody"><p class="intro">Presentamos una solución fotovoltaica dimensionada con base en la información disponible. Los resultados energéticos son estimaciones y deben confirmarse con las condiciones reales del proyecto.</p>
+<div class="highlights"><div class="hi"><span>Potencia</span><b id="pKwp">5,50 kWp</b></div><div class="hi"><span>Módulos</span><b id="pMods">10</b></div><div class="hi"><span>Generación/mes</span><b id="pGenM">715 kWh</b></div><div class="hi"><span>Generación/año</span><b id="pGenA">8.580 kWh</b></div></div>
+<h3 class="title">Configuración propuesta</h3><table class="equipment"><tr><td>Módulos fotovoltaicos</td><td id="pModule">10 × 550 Wp</td></tr><tr><td>Marca / modelo</td><td id="pModuleName">Por definir</td></tr><tr><td>Inversor</td><td id="pInv">Por definir</td></tr><tr><td>Potencia instalada</td><td id="pPower">5,50 kWp</td></tr></table>
+<h3 class="title">Alcance incluido</h3><div id="pIncludes" style="font-size:12px"></div>
+<div class="pricebox"><div><b>Inversión del proyecto</b><br><small>Según el alcance descrito en esta propuesta</small></div><div class="price" id="pPrice">A definir</div></div>
+<h3 class="title">Condiciones comerciales</h3><div class="conditions"><div class="cond"><b>Forma de pago</b><span id="pPago">A definir</span></div><div class="cond"><b>Plazo estimado</b><span id="pPlazo">A definir</span></div><div class="cond"><b>Validez de la propuesta</b><span id="pValidity">10 días</span></div><div class="cond"><b>Responsable</b><span id="pAdvisor">—</span></div></div>
+<h3 class="title">Observaciones</h3><p id="pObs" style="font-size:12px">Las condiciones finales deben confirmarse después de las validaciones técnicas necesarias.</p>
+<p class="note">Esta plantilla genera una propuesta comercial. El dimensionamiento, selección de equipos, instalación eléctrica, estructura, seguridad, conexión a red, permisos y demás requisitos técnicos/regulatorios deben ser validados por profesionales competentes y conforme a las normas y reglas aplicables en la ubicación del proyecto. La generación indicada es una estimación, no una garantía de producción.</p>
+<div class="signature"><div class="sig"><b id="pCompanySig">Empresa</b><br><span id="pContact"></span></div><div class="sig"><b id="pClientSig">Cliente</b><br>Aceptación / firma</div></div>
+</div></section>
+</div></main>
+<script>
+const ids=['empresa','asesor','telefono','email','cliente','ciudad','fecha','validez','kwp','mods','wp','modulo','inversor','genm','gena','valor','moeda','pago','plazo','incluye','obs'];
+function val(id){return document.getElementById(id).value.trim()}function num(id){return parseFloat(val(id))}
+function money(v){return Number.isFinite(v)?v.toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2}):''}
+function number(v,d=0){return Number.isFinite(v)?v.toLocaleString('es-ES',{minimumFractionDigits:d,maximumFractionDigits:d}):'—'}
+function txt(id,v){document.getElementById(id).textContent=v}
+function render(){
+ const emp=val('empresa')||'Empresa Solar', cli=val('cliente')||'Cliente', kw=num('kwp'), mods=num('mods'), wp=num('wp'), gm=num('genm'), ga=num('gena'), price=num('valor');
+ txt('pEmpresa',emp);txt('pCompanySig',emp);txt('pCliente',cli);txt('pClientSig',cli);txt('pCiudad',val('ciudad')||'—');
+ const d=val('fecha');txt('pDate',d?new Date(d+'T12:00:00').toLocaleDateString('es-ES'):'—');
+ txt('pKwp',number(kw,2)+' kWp');txt('pPower',number(kw,2)+' kWp');txt('pMods',Number.isFinite(mods)?mods:'—');txt('pGenM',number(gm,0)+' kWh');txt('pGenA',number(ga,0)+' kWh');
+ txt('pModule',(Number.isFinite(mods)?mods:'—')+' × '+(Number.isFinite(wp)?number(wp,0):'—')+' Wp');txt('pModuleName',val('modulo')||'Por definir');txt('pInv',val('inversor')||'Por definir');
+ document.getElementById('pIncludes').innerHTML=(val('incluye')||'Por definir').split('\n').filter(Boolean).map(x=>'✓ '+x.replace(/[<>]/g,'')).join('<br>');
+ txt('pPrice',Number.isFinite(price)?(val('moeda')+' '+money(price)):'A definir');txt('pPago',val('pago')||'A definir');txt('pPlazo',val('plazo')||'A definir');txt('pValidity',(val('validez')||'—')+' días');txt('pAdvisor',val('asesor')||'—');txt('pObs',val('obs')||'Las condiciones finales deben confirmarse después de las validaciones técnicas necesarias.');
+ txt('pContact',[val('asesor'),val('telefono'),val('email')].filter(Boolean).join(' · '));
+}
+function save(){render();localStorage.setItem('solarProposal',JSON.stringify(Object.fromEntries(ids.map(i=>[i,document.getElementById(i).value]))));alert('Propuesta guardada en este dispositivo.')}
+function clearData(){if(confirm('¿Limpiar los datos de la propuesta?')){localStorage.removeItem('solarProposal');ids.forEach(i=>document.getElementById(i).value='');document.getElementById('validez').value='10';render()}}
+(function(){document.getElementById('fecha').value=new Date().toISOString().slice(0,10);try{const d=JSON.parse(localStorage.getItem('solarProposal')||'null');if(d)ids.forEach(i=>{if(d[i]!=null)document.getElementById(i).value=d[i]})}catch(e){} ids.forEach(i=>document.getElementById(i).addEventListener('input',render));render()})();
+</script>
+</body></html>

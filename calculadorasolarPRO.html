@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Calculadora Solar PRO</title>
+<style>
+:root{--navy:#082f4d;--navy2:#05273f;--blue:#126d9d;--gold:#f2b134;--bg:#edf3f6;--card:#fff;--ink:#20323d;--muted:#687c88;--line:#d7e3e9;--green:#187454;--red:#a8483c;--soft:#f7fafb}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}.wrap{max-width:1120px;margin:auto}
+.hero{background:linear-gradient(135deg,var(--navy2),#0c4d79);color:#fff;padding:42px 20px 58px}.eyebrow{font-size:11px;letter-spacing:.16em;font-weight:900;color:#9ed7f2}.hero h1{font-size:44px;line-height:1.04;margin:9px 0 12px}.hero p{max-width:780px;color:#d9eaf2;margin:0}.pro{color:var(--gold)}
+main{padding:22px 20px 60px}.layout{display:grid;grid-template-columns:1.05fr .95fr;gap:16px;align-items:start}.panel{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 4px 18px #15374d0c}.panel h2{font-size:19px;color:var(--navy);margin:0;padding:17px 19px;background:#f8fbfc;border-bottom:1px solid var(--line)}.content{padding:18px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+label{display:block;font-size:12px;font-weight:800;color:var(--navy)}input,select{width:100%;margin-top:6px;padding:11px 12px;border:1px solid #bccbd4;border-radius:9px;font:inherit;color:var(--ink);background:#fff}.help{font-size:11px;color:var(--muted);margin-top:4px}.section-title{font-size:11px;letter-spacing:.12em;font-weight:900;color:var(--blue);margin:18px 0 10px;text-transform:uppercase}.section-title:first-child{margin-top:0}
+.btns{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.btn{border:0;border-radius:9px;padding:12px 15px;font-weight:900;cursor:pointer;background:var(--navy);color:#fff}.btn.gold{background:var(--gold);color:#1b3240}.btn.light{background:#e5eef2;color:var(--navy)}
+.note{background:#fff8e8;border-left:4px solid var(--gold);padding:11px 13px;border-radius:8px;font-size:12px;margin-top:14px}
+.results{position:sticky;top:12px}.heroresult{background:linear-gradient(135deg,var(--navy2),#0c4d79);color:#fff;padding:20px;border-radius:16px;margin-bottom:12px}.heroresult .label{font-size:10px;letter-spacing:.13em;color:#a7d8ee;font-weight:900}.big{font-size:42px;font-weight:900;color:var(--gold);line-height:1;margin:7px 0}.heroresult p{font-size:12px;color:#d9eaf2;margin:0}
+.metrics{display:grid;grid-template-columns:1fr 1fr;gap:10px}.metric{background:#fff;border:1px solid var(--line);border-radius:12px;padding:13px}.metric span{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:800}.metric b{display:block;font-size:22px;color:var(--navy);margin-top:3px}.metric small{font-size:10px;color:var(--muted)}
+.summary{background:#fff;border:1px solid var(--line);border-radius:13px;padding:16px;margin-top:10px}.summary h3{margin:0 0 9px;color:var(--navy);font-size:15px}.summary p{font-size:12px;margin:6px 0}.status{display:inline-block;padding:4px 7px;border-radius:6px;font-size:10px;font-weight:900;background:#eef8f4;color:var(--green)}.warn{background:#fff4e8;color:#9b6113}
+.compare{margin-top:17px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px}.compare h2{margin:0 0 5px;color:var(--navy);font-size:20px}.compare>p{font-size:12px;color:var(--muted);margin-top:0}.comparegrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.option{border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--soft)}.option h3{margin:0 0 9px;color:var(--navy);font-size:15px}.option .n{font-size:26px;font-weight:900;color:var(--blue)}table{width:100%;border-collapse:collapse;font-size:12px;margin-top:9px}td{padding:6px 0;border-bottom:1px solid #e5ecef}td:last-child{text-align:right;font-weight:800;color:var(--navy)}
+footer{text-align:center;color:var(--muted);font-size:11px;padding:20px}
+@media(max-width:820px){.layout{grid-template-columns:1fr}.results{position:static}.grid3{grid-template-columns:1fr}.hero h1{font-size:36px}}
+@media(max-width:560px){.grid2,.comparegrid,.metrics{grid-template-columns:1fr}}
+@media print{body{background:#fff}.hero{background:#fff!important;color:var(--navy);padding:20px}.hero p,.eyebrow{color:#667}.layout{display:block}.panel{box-shadow:none;margin-bottom:12px}.results{position:static}.btns,footer{display:none}.heroresult{background:#fff!important;color:var(--navy);border:1px solid #ccc}.heroresult p,.heroresult .label{color:#667}.big{color:var(--navy)}}
+</style>
+</head>
+<body>
+<section class="hero"><div class="wrap"><div class="eyebrow">HERRAMIENTA PREMIUM · MANUAL SOLAR</div><h1>Calculadora Solar <span class="pro">PRO</span></h1><p>Transforma el consumo del cliente en un dimensionamiento fotovoltaico preliminar, compara configuraciones y genera un resumen del estudio.</p></div></section>
+<main class="wrap">
+<div class="layout">
+<section class="panel"><h2>Datos del proyecto</h2><div class="content">
+<div class="section-title">Cliente y consumo</div>
+<div class="grid2"><label>Cliente<input id="cliente" placeholder="Nombre o referencia"></label><label>Consumo medio mensual (kWh)<input id="consumo" type="number" min="0" step=".01" value="620"></label></div>
+<div class="grid2" style="margin-top:12px"><label>Producción específica (kWh/kWp·mes)<input id="yield" type="number" min="1" step=".01" value="125"><div class="help">Debe venir de una fuente/simulación adecuada al proyecto.</div></label><label>Factor objetivo del consumo (%)<input id="objetivo" type="number" min="1" step=".1" value="100"><div class="help">100% usa todo el consumo de referencia como objetivo energético.</div></label></div>
+
+<div class="section-title">Módulo fotovoltaico</div>
+<div class="grid3"><label>Potencia (Wp)<input id="wp" type="number" min="1" value="550"></label><label>Largo (m)<input id="largo" type="number" min=".1" step=".01" value="2.28"></label><label>Ancho (m)<input id="ancho" type="number" min=".1" step=".01" value="1.13"></label></div>
+
+<div class="section-title">Ajustes del estudio</div>
+<div class="grid2"><label>Redondeo de módulos<select id="round"><option value="ceil">Hacia arriba</option><option value="nearest">Más cercano</option><option value="floor">Hacia abajo</option></select></label><label>Margen adicional de área (%)<input id="areamargin" type="number" min="0" step="1" value="20"><div class="help">Solo referencia espacial; no sustituye layout.</div></label></div>
+<div class="grid2" style="margin-top:12px"><label>Área útil disponible (m²) <small>opcional</small><input id="available" type="number" min="0" step=".1" placeholder="Ej.: 40"></label><label>Precio/costo por kWp <small>opcional</small><input id="costkwp" type="number" min="0" step=".01" placeholder="Ej.: 1200"></label></div>
+<div class="note"><b>Importante:</b> esta calculadora realiza un <b>dimensionamiento preliminar</b>. No selecciona inversor, strings, cables, protecciones ni valida estructura o conexión a red.</div>
+<div class="btns"><button class="btn gold" onclick="calc()">Calcular proyecto</button><button class="btn" onclick="save()">Guardar estudio</button><button class="btn light" onclick="window.print()">Imprimir / PDF</button><button class="btn light" onclick="resetCalc()">Limpiar</button></div>
+</div></section>
+
+<aside class="results">
+<div class="heroresult"><div class="label">POTENCIA INSTALADA PRELIMINAR</div><div class="big"><span id="rKwp">—</span> kWp</div><p id="rClient">Completa los datos y calcula el proyecto.</p></div>
+<div class="metrics">
+<div class="metric"><span>Módulos</span><b id="rMods">—</b><small>unidades</small></div>
+<div class="metric"><span>Potencia teórica</span><b id="rNeed">—</b><small>kWp antes del redondeo</small></div>
+<div class="metric"><span>Generación mensual</span><b id="rGenM">—</b><small>kWh/mes</small></div>
+<div class="metric"><span>Generación anual</span><b id="rGenA">—</b><small>kWh/año</small></div>
+<div class="metric"><span>Área de módulos</span><b id="rArea">—</b><small>m² + margen informado</small></div>
+<div class="metric"><span>Atención energética</span><b id="rCoverage">—</b><small>vs. consumo de referencia</small></div>
+</div>
+<div class="summary"><h3>Resumen del estudio</h3><p><b>Energía objetivo:</b> <span id="rTarget">—</span></p><p><b>Área disponible:</b> <span id="rSpace">No informada</span></p><p><b>Estimación económica:</b> <span id="rCost">No informada</span></p><p><span class="status warn">PRELIMINAR</span> Requiere validación técnica y regulatoria.</p></div>
+</aside>
+</div>
+
+<section class="compare"><h2>Comparador automático de configuraciones</h2><p>La herramienta muestra una opción inmediatamente inferior y una superior a la cantidad calculada para ayudarte a comparar el efecto del redondeo.</p>
+<div class="comparegrid"><div class="option"><h3>Configuración menor</h3><div class="n"><span id="aMods">—</span> módulos</div><table><tr><td>Potencia</td><td id="aKwp">—</td></tr><tr><td>Generación/mes</td><td id="aGen">—</td></tr><tr><td>Atención consumo</td><td id="aCov">—</td></tr></table></div>
+<div class="option"><h3>Configuración mayor</h3><div class="n"><span id="bMods">—</span> módulos</div><table><tr><td>Potencia</td><td id="bKwp">—</td></tr><tr><td>Generación/mes</td><td id="bGen">—</td></tr><tr><td>Atención consumo</td><td id="bCov">—</td></tr></table></div></div>
+</section>
+</main>
+<footer>Calculadora Solar PRO · Herramienta educativa · Verifica recurso solar, datasheets, diseño, normas y requisitos locales antes de utilizar resultados en un proyecto real.</footer>
+<script>
+const ids=['cliente','consumo','yield','objetivo','wp','largo','ancho','round','areamargin','available','costkwp'];
+function n(id){return parseFloat(document.getElementById(id).value)}
+function fmt(v,d=2){return Number.isFinite(v)?v.toLocaleString('es-ES',{minimumFractionDigits:d,maximumFractionDigits:d}):'—'}
+function set(id,v){document.getElementById(id).textContent=v}
+function option(mods,wp,yld,cons,prefix){
+ const kwp=mods*wp/1000, gen=kwp*yld, cov=gen/cons*100;
+ set(prefix+'Mods',mods);set(prefix+'Kwp',fmt(kwp,2)+' kWp');set(prefix+'Gen',fmt(gen,0)+' kWh');set(prefix+'Cov',fmt(cov,1)+'%')
+}
+function calc(){
+ const cons=n('consumo'), yld=n('yield'), obj=n('objetivo'), wp=n('wp'), l=n('largo'), w=n('ancho'), margin=n('areamargin');
+ if(!(cons>0&&yld>0&&obj>0&&wp>0&&l>0&&w>0)){alert('Completa los datos obligatorios con valores mayores que cero.');return}
+ const target=cons*(obj/100), need=target/yld, theoretical=need/(wp/1000);
+ let mods=document.getElementById('round').value==='ceil'?Math.ceil(theoretical):document.getElementById('round').value==='floor'?Math.floor(theoretical):Math.round(theoretical);mods=Math.max(1,mods);
+ const kwp=mods*wp/1000, genm=kwp*yld, gena=genm*12, area=mods*l*w*(1+margin/100), cov=genm/cons*100;
+ set('rKwp',fmt(kwp,2));set('rMods',mods);set('rNeed',fmt(need,2));set('rGenM',fmt(genm,0));set('rGenA',fmt(gena,0));set('rArea',fmt(area,1));set('rCoverage',fmt(cov,1)+'%');set('rTarget',fmt(target,0)+' kWh/mes');
+ set('rClient',document.getElementById('cliente').value.trim()?('Estudio preliminar · '+document.getElementById('cliente').value.trim()):'Estudio preliminar calculado');
+ const av=n('available'); if(av>0)set('rSpace',(area<=av?'Compatible por área bruta de referencia':'Área de referencia superior a la disponible')+' · '+fmt(av,1)+' m² disponibles');else set('rSpace','No informada');
+ const ck=n('costkwp');set('rCost',ck>=0&&document.getElementById('costkwp').value!==''?fmt(kwp*ck,2)+' unidades monetarias':'No informada');
+ const low=Math.max(1,mods-1), high=mods+1;option(low,wp,yld,cons,'a');option(high,wp,yld,cons,'b');
+ localStorage.setItem('solarProLast',JSON.stringify(Object.fromEntries(ids.map(i=>[i,document.getElementById(i).value]))));
+}
+function save(){calc();localStorage.setItem('solarProSaved',JSON.stringify(Object.fromEntries(ids.map(i=>[i,document.getElementById(i).value]))));alert('Estudio guardado en este dispositivo.')}
+function resetCalc(){if(confirm('¿Limpiar todos los datos?')){ids.forEach(i=>document.getElementById(i).value='');document.getElementById('objetivo').value=100;document.getElementById('areamargin').value=20;document.getElementById('round').value='ceil';localStorage.removeItem('solarProSaved');location.reload()}}
+(function(){try{const d=JSON.parse(localStorage.getItem('solarProSaved')||'null');if(d){ids.forEach(i=>{if(d[i]!=null)document.getElementById(i).value=d[i]});calc()}else calc()}catch(e){calc()}})();
+</script>
+</body></html>

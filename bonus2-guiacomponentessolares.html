@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Guía Interactiva de Componentes Solares</title>
+<style>
+:root{--navy:#082f4d;--navy2:#062943;--blue:#126d9d;--gold:#f2b134;--bg:#eef4f7;--card:#fff;--ink:#20323d;--muted:#6b7e89;--line:#d7e3e9;--soft:#f7fafb;--green:#187454}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+.hero{background:linear-gradient(135deg,var(--navy2),#0c4d79);color:white;padding:48px 20px 62px;overflow:hidden;position:relative}
+.hero:after{content:"";position:absolute;width:320px;height:320px;border:1px solid #ffffff22;right:-70px;top:-120px;transform:rotate(25deg);box-shadow:0 0 0 35px #ffffff08,0 0 0 70px #ffffff06}
+.wrap{max-width:1080px;margin:auto;position:relative;z-index:1}.eyebrow{font-size:11px;letter-spacing:.16em;font-weight:900;color:#9ed7f2}.hero h1{font-size:44px;line-height:1.04;margin:10px 0 14px;max-width:760px}.hero p{max-width:760px;color:#d9eaf2;margin:0}
+.tools{margin-top:-28px;padding:0 20px;position:sticky;top:0;z-index:10}.toolbox{max-width:1080px;margin:auto;background:#fff;border:1px solid var(--line);border-radius:15px;padding:14px;box-shadow:0 8px 30px #06294322;display:grid;grid-template-columns:1fr auto;gap:10px}
+.search{width:100%;padding:12px 14px;border:1px solid #bdccd5;border-radius:9px;font:inherit}.count{display:flex;align-items:center;padding:0 12px;color:var(--muted);font-size:13px;white-space:nowrap}
+main{padding:25px 20px 60px}.filters{display:flex;gap:8px;flex-wrap:wrap;margin:5px 0 20px}.filter{border:1px solid #cbd9e0;background:#fff;color:var(--navy);padding:8px 12px;border-radius:20px;cursor:pointer;font-weight:700;font-size:12px}.filter.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}.card{background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden;box-shadow:0 4px 18px #15374d0b;transition:.18s}.card:hover{transform:translateY(-2px);box-shadow:0 8px 25px #15374d16}
+.cardtop{display:grid;grid-template-columns:82px 1fr;gap:14px;padding:17px;align-items:center}.icon{height:72px;border-radius:12px;background:#edf6fa;display:flex;align-items:center;justify-content:center}.icon svg{width:60px;height:60px}.tag{font-size:10px;letter-spacing:.12em;font-weight:900;color:var(--blue);text-transform:uppercase}.card h2{font-size:20px;color:var(--navy);margin:2px 0 5px}.desc{font-size:13px;color:var(--muted);margin:0}.open{border:0;border-top:1px solid var(--line);background:#f8fbfc;width:100%;text-align:left;padding:11px 17px;color:var(--blue);font-weight:800;cursor:pointer}.details{display:none;padding:4px 17px 18px;border-top:1px solid var(--line)}.card.expanded .details{display:block}.card.expanded .open{background:var(--navy);color:#fff}
+.details h3{font-size:14px;color:var(--navy);margin:16px 0 6px}.details p,.details li{font-size:13px}.details ul{padding-left:18px;margin:6px 0}.alert{background:#fff8e8;border-left:4px solid var(--gold);padding:11px 12px;border-radius:8px;margin-top:12px;font-size:12px}.good{background:#eef8f4;border-left-color:var(--green)}
+.compare{background:var(--navy);color:#fff;border-radius:16px;padding:22px;margin-top:25px}.compare h2{color:#fff;margin:0 0 7px}.compare p{color:#dceaf1;margin:0 0 15px}.compare-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.mini{background:#ffffff10;border:1px solid #ffffff22;border-radius:10px;padding:13px}.mini b{display:block;color:var(--gold);margin-bottom:5px}
+.glossary{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;margin-top:18px}.glossary h2{color:var(--navy);margin-top:0}.terms{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.term{background:var(--soft);border-radius:9px;padding:11px;font-size:12px}.term b{color:var(--navy);display:block}
+footer{text-align:center;color:var(--muted);font-size:11px;padding:20px}
+@media(max-width:720px){.hero h1{font-size:35px}.grid{grid-template-columns:1fr}.toolbox{grid-template-columns:1fr}.count{padding:0}.compare-grid,.terms{grid-template-columns:1fr}.tools{top:0}.cardtop{grid-template-columns:70px 1fr}}
+@media print{.tools,.filters,.open,footer{display:none}.hero{background:#fff!important;color:var(--navy);padding:20px}.hero p,.eyebrow{color:#667}.grid{display:block}.card{box-shadow:none;margin:0 0 12px;break-inside:avoid}.details{display:block!important}.compare{background:#fff!important;color:var(--ink);border:1px solid #ccc}.compare h2,.compare p{color:var(--navy)}.mini{border:1px solid #ddd}.mini b{color:var(--navy)}}
+</style>
+</head>
+<body>
+<section class="hero"><div class="wrap"><div class="eyebrow">BONUS 2 · MANUAL SOLAR</div><h1>Guía Interactiva de<br>Componentes Solares</h1><p>Consulta qué hace cada componente, qué datos debes revisar y qué errores evitar al analizar un sistema fotovoltaico conectado a red.</p></div></section>
+<div class="tools"><div class="toolbox"><input id="search" class="search" placeholder="Buscar: Voc, MPPT, cable, protección, estructura..."><div class="count"><span id="visible">10</span>&nbsp;componentes</div></div></div>
+<main class="wrap">
+<div class="filters">
+<button class="filter active" data-cat="all">Todos</button><button class="filter" data-cat="generacion">Generación</button><button class="filter" data-cat="conversion">Conversión</button><button class="filter" data-cat="mecanica">Estructura</button><button class="filter" data-cat="electrica">Eléctrica</button><button class="filter" data-cat="control">Control</button>
+</div>
+<div class="grid" id="cards">
+
+<article class="card" data-cat="generacion" data-search="modulo panel fotovoltaico pmax voc isc vmp imp temperatura">
+<div class="cardtop"><div class="icon"><svg viewBox="0 0 70 70"><rect x="10" y="14" width="50" height="40" rx="3" fill="#176a9e" stroke="#082f4d" stroke-width="2"/><path d="M22 14v40M35 14v40M48 14v40M10 27h50M10 40h50" stroke="#dff3fb" stroke-width="2"/><path d="M27 55l-5 7M43 55l5 7" stroke="#082f4d" stroke-width="2"/></svg></div><div><div class="tag">Generación</div><h2>Módulo fotovoltaico</h2><p class="desc">Convierte la radiación solar en electricidad en corriente continua.</p></div></div>
+<button class="open">Ver ficha técnica ↓</button><div class="details"><h3>Qué debes mirar</h3><ul><li><b>Pmax:</b> potencia nominal del módulo.</li><li><b>Voc:</b> tensión de circuito abierto.</li><li><b>Isc:</b> corriente de cortocircuito.</li><li><b>Vmp / Imp:</b> tensión y corriente en máxima potencia.</li><li>Dimensiones, peso y coeficientes de temperatura.</li><li>Garantías y documentación del fabricante.</li></ul><h3>Por qué importa</h3><p>Estos datos participan en el cálculo de potencia, layout y compatibilidad eléctrica con el inversor.</p><div class="alert"><b>Error común:</b> elegir únicamente por el número de watts. Un módulo de mayor potencia no elimina la necesidad de revisar dimensiones y parámetros eléctricos.</div></div>
+</article>
+
+<article class="card" data-cat="conversion" data-search="inversor inverter mppt dc ac corriente continua alterna tension entrada">
+<div class="cardtop"><div class="icon"><svg viewBox="0 0 70 70"><rect x="15" y="10" width="40" height="50" rx="6" fill="#fff" stroke="#176a9e" stroke-width="3"/><circle cx="35" cy="24" r="4" fill="#f2b134"/><path d="M22 43q7-14 14 0t14 0" fill="none" stroke="#176a9e" stroke-width="3"/></svg></div><div><div class="tag">Conversión</div><h2>Inversor</h2><p class="desc">Convierte CC en CA y gestiona el punto de operación del generador.</p></div></div>
+<button class="open">Ver ficha técnica ↓</button><div class="details"><h3>Qué debes mirar</h3><ul><li>Potencia nominal CA.</li><li>Tensión máxima de entrada CC.</li><li>Rango de tensión MPPT.</li><li>Corriente máxima por MPPT/entrada.</li><li>Número de MPPT y entradas.</li><li>Requisitos de instalación y protecciones del fabricante.</li></ul><h3>MPPT</h3><p>El seguimiento del punto de máxima potencia busca el punto de operación del generador que entrega mayor potencia bajo las condiciones existentes.</p><div class="alert"><b>Error común:</b> seleccionar el inversor solamente comparando kWp de módulos con kW del inversor.</div></div>
+</article>
+
+<article class="card" data-cat="mecanica" data-search="estructura soporte fijacion riel techo cubierta aluminio montaje">
+<div class="cardtop"><div class="icon"><svg viewBox="0 0 70 70"><polygon points="10,52 34,18 62,38 40,58" fill="#dce8ed" stroke="#082f4d" stroke-width="2"/><rect x="29" y="24" width="25" height="19" transform="rotate(19 41 33)" fill="#176a9e" stroke="#082f4d"/></svg></div><div><div class="tag">Estructura</div><h2>Sistema de montaje</h2><p class="desc">Fija los módulos a la cubierta, suelo u otra estructura soporte.</p></div></div>
+<button class="open">Ver ficha técnica ↓</button><div class="details"><h3>Qué debes revisar</h3><ul><li>Compatibilidad con el tipo de cubierta.</li><li>Materiales y ambiente de instalación.</li><li>Método y puntos de fijación.</li><li>Cargas y requisitos estructurales aplicables.</li><li>Instrucciones del fabricante.</li></ul><div class="alert"><b>Error común:</b> tratar todas las cubiertas como si utilizaran la misma solución de fijación.</div></div>
+</article>
+
+<article class="card" data-cat="electrica" data-search="cable solar conductor dc cc seccion aislamiento corriente caida tension">
+<div class="cardtop"><div class="icon"><svg viewBox="0 0 70 70"><path d="M9 42c13-25 26 25 39 0s13-8 15-2" fill="none" stroke="#082f4d" stroke-width="8"/><path d="M9 42c13-25 26 25 39 0s13-8 15-2" fill="none" stroke="#f2b134" stroke-width="3"/></svg></div><div><div class="tag">Eléctrica</div><h2>Conductores / cables</h2><p class="desc">Transportan la energía entre los diferentes puntos del sistema.</p></div></div>
+<button class="open">Ver ficha técnica ↓</button><div class="details"><h3>Dimensionamiento</h3><p>No existe una sección universal. Deben considerarse corriente, tensión, método de instalación, temperatura, agrupamiento, aislamiento, longitud, caída de tensión y norma aplicable.</p><h3>En fotovoltaica</h3><p>El lado CC requiere productos y criterios compatibles con las condiciones de uso, exposición y tensión del circuito.</p><div class="alert"><b>Error común:</b> copiar una sección en mm² de otro proyecto sin repetir el cálculo.</div></div>
+</article>
+
+<article class="card" data-cat="electrica" data-search="conector fotovoltaico mc4 terminal polaridad crimpado conexion">
+<div class="cardtop"><div class="icon"><svg viewBox="0 0 70 70"><path d="M8 35h19" stroke="#082f4d" stroke-width="5"/><rect x="26" y="25" width="16" height="20" rx="3" fill="#176a9e"/><path d="M62 35H43" stroke="#082f4d" stroke-width="5"/><rect x="42" y="28" width="8" height="14" fill="#f2b134"/></svg></div><div><div class="tag">Eléctrica</div><h2>Conectores fotovoltaicos</h2><p class="desc">Realizan conexiones desmontables en circuitos del generador.</p></div></div>
+<button class="open">Ver ficha técnica ↓</button><div class="details"><h3>Buenas prácticas</h3><ul><li>Usar componentes compatibles y especificados para la aplicación.</li><li>Seguir herramientas y procedimiento de terminación del fabricante.</li><li>Respetar polaridad.</li><li>Evitar conexiones improvisadas.</li></ul><div class="alert"><b>Error común:</b> asumir que conectores físicamente parecidos son automáticamente compatibles entre fabricantes/modelos.</div></div>
+</article>
+
+<article class="card" data-cat="electrica" data-search="fusible disyuntor interruptor proteccion sobrecorriente cc dc ca ac">
+<div class="cardtop"><div class="icon"><svg viewBox="0 0 70 70"><rect x="17" y="10" width="36" height="50" rx="5" fill="#fff" stroke="#176a9e" stroke-width="3"/><rect x="26" y="22" width="18" height="20" rx="3" fill="#f2b134"/><path d="M35 42v9" stroke="#082f4d" stroke-width="3"/></svg></div><div><div class="tag">Protección</div><h2>Protección contra sobrecorriente</h2><p class="desc">Dispositivos seleccionados según la arquitectura, conductores, equipos y requisitos aplicables.</p></div></div>
+<button class="open">Ver ficha técnica ↓</button><div class="details"><h3>No se elige por intuición</h3><p>La necesidad, tipo y calibre dependen del circuito, corrientes posibles, capacidad de los conductores/equipos, configuración de strings, capacidad de interrupción y normas locales.</p><div class="alert"><b>Error común:</b> usar el mismo dispositivo y calibre en todos los proyectos.</div></div>
+</article>
+
+<article class="card" data-cat="electrica" data-search="dps sobretension surge protection spd descargas atmosfericas">
+<div class="cardtop"><div class="icon"><svg viewBox="0 0 70 70"><path d="M40 6L20 38h15l-6 26 22-35H37z" fill="#f2b134" stroke="#082f4d" stroke-width="2"/></svg></div><div><div class="tag">Protección</div><h2>Protección contra sobretensiones</h2><p class="desc">Ayuda a limitar sobretensiones transitorias dentro de un diseño coordinado.</p></div></div>
+<button class="open">Ver ficha técnica ↓</button><div class="details"><h3>Qué revisar</h3><p>Tipo/clase aplicable, tensión, coordinación, ubicación, esquema de puesta a tierra, lado CC/CA y requisitos normativos. La protección contra sobretensiones no sustituye un análisis completo de protección contra descargas atmosféricas cuando corresponda.</p><div class="alert"><b>Error común:</b> pensar que instalar un DPS aislado resuelve cualquier riesgo asociado a rayos.</div></div>
+</article>
+
+<article class="card" data-cat="electrica" data-search="seccionador interruptor aislamiento desconexion dc cc seguridad">
+<div class="cardtop"><div class="icon"><svg viewBox="0 0 70 70"><circle cx="18" cy="47" r="6" fill="#176a9e"/><circle cx="53" cy="47" r="6" fill="#176a9e"/><path d="M22 43l25-25" stroke="#082f4d" stroke-width="5"/></svg></div><div><div class="tag">Seccionamiento</div><h2>Dispositivos de seccionamiento</h2><p class="desc">Permiten aislar partes del sistema según el diseño y los requisitos aplicables.</p></div></div>
+<button class="open">Ver ficha técnica ↓</button><div class="details"><h3>Atención</h3><p>Un dispositivo utilizado en CC debe ser adecuado para la tensión, corriente y naturaleza del circuito. La ubicación y necesidad deben seguir arquitectura, fabricante y regulación.</p><div class="alert"><b>Error común:</b> asumir que un interruptor destinado a CA puede utilizarse de la misma manera en CC.</div></div>
+</article>
+
+<article class="card" data-cat="control" data-search="medidor bidireccional energia red importacion exportacion distribuidora">
+<div class="cardtop"><div class="icon"><svg viewBox="0 0 70 70"><rect x="13" y="10" width="44" height="50" rx="7" fill="#fff" stroke="#176a9e" stroke-width="3"/><rect x="22" y="20" width="26" height="14" fill="#dff1f8"/><circle cx="35" cy="46" r="7" fill="#f2b134"/></svg></div><div><div class="tag">Medición</div><h2>Medición de energía</h2><p class="desc">Registra energía según el esquema de medición definido para la instalación.</p></div></div>
+<button class="open">Ver ficha técnica ↓</button><div class="details"><h3>Reglas locales</h3><p>El tipo de medidor, proceso de sustitución/configuración y tratamiento de energía importada/exportada dependen del país, distribuidora y modalidad aplicable.</p><div class="alert"><b>Error común:</b> prometer al cliente un mecanismo de compensación sin verificar la regla vigente.</div></div>
+</article>
+
+<article class="card" data-cat="control" data-search="monitorizacion monitoreo wifi datalogger aplicativo produccion alarma portal">
+<div class="cardtop"><div class="icon"><svg viewBox="0 0 70 70"><rect x="10" y="14" width="50" height="38" rx="5" fill="#fff" stroke="#176a9e" stroke-width="3"/><path d="M18 43l10-10 8 5 14-16" fill="none" stroke="#f2b134" stroke-width="4"/><path d="M28 59h14" stroke="#082f4d" stroke-width="3"/></svg></div><div><div class="tag">Control</div><h2>Monitoreo</h2><p class="desc">Permite acompañar datos de operación, producción y eventos del sistema.</p></div></div>
+<button class="open">Ver ficha técnica ↓</button><div class="details"><h3>Qué puede aportar</h3><ul><li>Producción y potencia a lo largo del tiempo.</li><li>Estado del inversor.</li><li>Alarmas/eventos según la plataforma.</li><li>Comparación histórica.</li></ul><p>Los datos disponibles dependen del equipo, sensores y plataforma instalados.</p><div class="alert"><b>Error común:</b> interpretar una captura aislada como diagnóstico definitivo de una falla.</div></div>
+</article>
+
+</div>
+
+<section class="compare"><h2>Cómo pensar los componentes como un sistema</h2><p>No memorices piezas aisladas. Sigue el flujo y revisa cómo una decisión afecta a la siguiente.</p><div class="compare-grid"><div class="mini"><b>1 · Generar</b>Módulos + recurso solar + layout.</div><div class="mini"><b>2 · Compatibilizar</b>Strings, MPPT, tensiones y corrientes.</div><div class="mini"><b>3 · Integrar</b>Estructura, conductores, protecciones, red y monitoreo.</div></div></section>
+
+<section class="glossary"><h2>Glosario rápido</h2><div class="terms">
+<div class="term"><b>Pmax</b>Potencia máxima nominal del módulo en condiciones de referencia.</div>
+<div class="term"><b>Voc</b>Tensión de circuito abierto.</div>
+<div class="term"><b>Isc</b>Corriente de cortocircuito.</div>
+<div class="term"><b>Vmp</b>Tensión en el punto de máxima potencia.</div>
+<div class="term"><b>Imp</b>Corriente en el punto de máxima potencia.</div>
+<div class="term"><b>MPPT</b>Seguimiento del punto de máxima potencia.</div>
+<div class="term"><b>String</b>Conjunto de módulos conectados eléctricamente en serie.</div>
+<div class="term"><b>CC / DC</b>Corriente continua.</div>
+<div class="term"><b>CA / AC</b>Corriente alterna.</div>
+<div class="term"><b>kWp</b>Potencia pico nominal del generador fotovoltaico.</div>
+<div class="term"><b>kWh</b>Unidad de energía.</div>
+<div class="term"><b>Datasheet</b>Ficha técnica oficial del fabricante.</div>
+</div></section>
+
+<div class="alert good" style="margin-top:18px"><b>Regla de oro:</b> esta guía sirve para aprender qué revisar. La selección final debe hacerse con datasheets reales, cálculos del proyecto, instrucciones de fabricante, normas y requisitos locales, y personal competente cuando corresponda.</div>
+</main>
+<footer>Bonus educativo · Manual Solar · Guía Interactiva de Componentes Solares</footer>
+<script>
+const cards=[...document.querySelectorAll('.card')], search=document.getElementById('search'), filters=[...document.querySelectorAll('.filter')];let cat='all';
+document.querySelectorAll('.open').forEach(b=>b.onclick=()=>{const c=b.closest('.card');c.classList.toggle('expanded');b.textContent=c.classList.contains('expanded')?'Cerrar ficha ↑':'Ver ficha técnica ↓'});
+function apply(){const q=search.value.toLowerCase().trim();let n=0;cards.forEach(c=>{const okCat=cat==='all'||c.dataset.cat===cat;const okQ=!q||(c.dataset.search+' '+c.innerText).toLowerCase().includes(q);c.style.display=okCat&&okQ?'':'none';if(okCat&&okQ)n++});document.getElementById('visible').textContent=n}
+search.oninput=apply;filters.forEach(b=>b.onclick=()=>{filters.forEach(x=>x.classList.remove('active'));b.classList.add('active');cat=b.dataset.cat;apply()});
+</script>
+</body></html>
