@@ -13,7 +13,94 @@
 <body><div class="shell"><main class="card">
 <div class="top hidden" id="progressWrap"><div class="progress-meta"><span id="stepLabel"></span><span id="percent"></span></div><div class="track"><div class="bar" id="bar"></div></div></div>
 <section class="content">
-<div class="intro" id="intro"><span class="pill">Especialistas em Energia Solar</span><h1>Tráfego pago para quem vende energia solar.</h1><p class="lead"><strong>Há mais de 5 anos atuando 100% focados no mercado solar.</strong><br><br>Não somos uma agência tentando entender como funciona o seu negócio. Nossa fundadora já atuou diretamente com vendas de energia solar e hoje usamos essa experiência para trabalhar <strong>da captação do lead à conversão em vendas.</strong></p><div class="proof-title">Resultados de clientes ↓</div><div class="proofs"><img src="1.png" alt="Cliente relata 8 vendas fechadas"><img src="2.png" alt="Cliente relata 5 usinas vendidas"><img src="3.png" alt="Cliente relata 4 vendas através do tráfego pago"></div><div class="stats"><div class="stat">8 vendas fechadas</div><div class="stat">5 usinas vendidas em um mês</div><div class="stat">4 vendas vindas do tráfego pago</div></div><button class="start" id="start" type="button">QUERO ESCALAR MINHAS VENDAS →</button><div class="micro">Responda 7 perguntas rápidas e, ao final, escolha um horário.</div></div>
+<div class="intro" id="intro"><span class="pill">Especialistas em Energia Solar</span><h1>Tráfego pago para quem vende energia solar.</h1><p class="lead"><strong>Há mais de 5 anos atuando 100% focados no mercado solar.</strong><br><br>Não somos uma agência tentando entender como funciona o seu negócio. Nossa fundadora já atuou diretamente com vendas de energia solar e hoje usamos essa experiência para trabalhar <strong>da captação do lead à conversão em vendas.</strong></p>/* RESULTADOS - DESKTOP */
+.resultados-section {
+  margin-top: 28px;
+}
+
+.resultados-section h3 {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.resultados-carousel {
+  display: flex;
+  gap: 12px;
+}
+
+.resultado-slide {
+  flex: 1;
+}
+
+.resultado-slide img {
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+}
+
+.resultado-titulo {
+  margin-top: 12px;
+  padding: 14px 10px;
+  border: 1px solid #d9e5ff;
+  background: #f7faff;
+  border-radius: 14px;
+
+  text-align: center;
+  font-weight: 700;
+  color: #0b1b3a;
+}
+
+.carousel-dica {
+  display: none;
+}
+
+
+/* CELULAR */
+@media (max-width: 768px) {
+
+  .resultados-carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 14px;
+
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: none;
+  }
+
+  .resultados-carousel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .resultado-slide {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+  }
+
+  .resultado-slide img {
+    width: 100%;
+    height: auto;
+    border-radius: 14px;
+  }
+
+  .resultado-titulo {
+    margin-top: 10px;
+    padding: 14px 12px;
+    font-size: 15px;
+  }
+
+  .carousel-dica {
+    display: block;
+    text-align: center;
+    font-size: 12px;
+    color: #777;
+    margin-top: 10px;
+  }
+
+}<button class="start" id="start" type="button">QUERO ESCALAR MINHAS VENDAS →</button><div class="micro">Responda 7 perguntas rápidas e, ao final, escolha um horário.</div></div>
 <form id="leadForm" class="hidden" novalidate><div id="question"></div><div class="error" id="error">Preencha esta etapa para continuar.</div><div class="actions"><button class="btn btn-back hidden" type="button" id="back">Voltar</button><button class="btn btn-next" type="button" id="next">Continuar →</button></div></form>
 <div class="done" id="done"><span class="badge">✓ 98% concluído</span><h1 style="margin-top:18px">Agora agende um horário</h1><p class="sub">Escolha abaixo o melhor dia e horário para conversarmos sobre a sua operação de energia solar.</p><div class="calendar"><div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-reuniao"></div></div></div>
 </section></main></div>
