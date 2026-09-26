@@ -123,9 +123,7 @@ color:#101828;
 }
 
 
-/* =========================
-   RESULTADOS
-========================= */
+/* RESULTADOS */
 
 .resultados-section{
 margin-top:30px;
@@ -179,9 +177,7 @@ display:none;
 }
 
 
-/* =========================
-   BOTÕES
-========================= */
+/* BOTÕES */
 
 .start{
 border:0;
@@ -208,9 +204,7 @@ margin-top:12px;
 }
 
 
-/* =========================
-   PROGRESSO
-========================= */
+/* PROGRESSO */
 
 .top{
 padding:22px 28px 0;
@@ -239,9 +233,7 @@ transition:.25s;
 }
 
 
-/* =========================
-   FORMULÁRIO
-========================= */
+/* FORMULÁRIO */
 
 .eyebrow{
 color:var(--blue);
@@ -361,9 +353,7 @@ display:none!important;
 }
 
 
-/* =========================
-   CELULAR
-========================= */
+/* CELULAR */
 
 @media(max-width:680px){
 
@@ -382,9 +372,6 @@ padding:30px 20px;
 .intro .lead{
 font-size:15px;
 }
-
-
-/* CARROSSEL */
 
 .resultados-section{
 margin-top:26px;
@@ -434,9 +421,6 @@ font-size:14px;
 border-radius:13px;
 }
 
-
-/* BOLINHAS */
-
 .carousel-dots{
 display:flex;
 justify-content:center;
@@ -472,8 +456,6 @@ padding:18px 20px 0;
 
 }
 
-
-/* DESKTOP */
 @media(min-width:681px){
 
 .resultados-carousel{
@@ -484,7 +466,6 @@ overflow:visible;
 
 </style>
 </head>
-
 
 <body>
 
@@ -509,9 +490,7 @@ overflow:visible;
 <section class="content">
 
 
-<!-- =========================
-     INTRODUÇÃO
-========================= -->
+<!-- INTRODUÇÃO -->
 
 <div class="intro" id="intro">
 
@@ -542,8 +521,6 @@ da captação do lead à conversão em vendas.
 </p>
 
 
-<!-- RESULTADOS -->
-
 <div class="resultados-section">
 
 <h3>
@@ -552,7 +529,6 @@ Resultados de clientes ↓
 
 
 <div class="resultados-carousel" id="resultadosCarousel">
-
 
 <div class="resultado-slide">
 
@@ -592,7 +568,6 @@ alt="Cliente com 4 vendas vindas do tráfego pago">
 
 </div>
 
-
 </div>
 
 
@@ -608,7 +583,6 @@ alt="Cliente com 4 vendas vindas do tráfego pago">
 Deslize para ver mais →
 </div>
 
-
 </div>
 
 
@@ -623,18 +597,13 @@ QUERO ESCALAR MINHAS VENDAS →
 
 
 <div class="micro">
-
 Responda 7 perguntas rápidas e, ao final, escolha um horário.
-
 </div>
 
 </div>
 
 
-
-<!-- =========================
-     FORMULÁRIO
-========================= -->
+<!-- FORMULÁRIO -->
 
 <form
 id="leadForm"
@@ -678,10 +647,7 @@ Continuar →
 </form>
 
 
-
-<!-- =========================
-     AGENDA
-========================= -->
+<!-- AGENDA -->
 
 <div
 class="done"
@@ -718,13 +684,10 @@ id="my-cal-inline-reuniao">
 </div>
 
 
-
 <script>
 
 
-/* =========================
-   PERGUNTAS
-========================= */
+/* PERGUNTAS */
 
 const questions=[
 
@@ -799,10 +762,7 @@ options:[
 ];
 
 
-
-/* =========================
-   WEBHOOK
-========================= */
+/* WEBHOOK */
 
 const WEBHOOK=
 'https://n8n-n8n.wvkny4.easypanel.host/webhook/funil-agencia-solar';
@@ -811,29 +771,16 @@ const WEBHOOK=
 const params=
 new URLSearchParams(window.location.search);
 
-
 let step=0;
-
 let data={};
 
-
-const q=
-document.querySelector('#question');
-
-const next=
-document.querySelector('#next');
-
-const back=
-document.querySelector('#back');
-
-const err=
-document.querySelector('#error');
+const q=document.querySelector('#question');
+const next=document.querySelector('#next');
+const back=document.querySelector('#back');
+const err=document.querySelector('#error');
 
 
-
-/* =========================
-   PIXEL
-========================= */
+/* PIXEL */
 
 function pixelCustom(name,params={}){
 
@@ -843,7 +790,6 @@ fbq('trackCustom',name,params);
 
 }
 
-
 function pixelStandard(name,params={}){
 
 if(typeof fbq==='function'){
@@ -851,7 +797,6 @@ fbq('track',name,params);
 }
 
 }
-
 
 pixelStandard(
 'ViewContent',
@@ -861,55 +806,58 @@ content_name:'Funil Agência Solar'
 );
 
 
+/* SALVAMENTO PROGRESSIVO */
 
-/* =========================
-   ENVIA LEAD
-========================= */
+async function enviarLead(status='em_preenchimento'){
 
-async function enviarLead(){
+// Não envia enquanto não tivermos nome + WhatsApp
+if(!data.nome || !data.whatsapp){
+return null;
+}
 
 const payload={
 
-nome:data.nome||'',
+nome:data.nome,
+whatsapp:data.whatsapp,
 
-whatsapp:data.whatsapp||'',
-
-instagram:data.instagram||'',
-
-email:data.email||'',
-
-experiencia_trafego:
-data.experiencia||'',
-
-faturamento:
-data.faturamento||'',
-
-investimento:
-data.investimento||'',
-
-utm_source:
-params.get('utm_source')||'',
-
-utm_medium:
-params.get('utm_medium')||'',
-
-utm_campaign:
-params.get('utm_campaign')||'',
-
-utm_content:
-params.get('utm_content')||'',
-
-utm_term:
-params.get('utm_term')||''
+utm_source:params.get('utm_source')||'',
+utm_medium:params.get('utm_medium')||'',
+utm_campaign:params.get('utm_campaign')||'',
+utm_content:params.get('utm_content')||'',
+utm_term:params.get('utm_term')||''
 
 };
+
+/*
+Só adiciona ao payload os campos que
+a pessoa realmente já respondeu.
+*/
+
+if(data.instagram){
+payload.instagram=data.instagram;
+}
+
+if(data.email){
+payload.email=data.email;
+}
+
+if(data.experiencia){
+payload.experiencia_trafego=data.experiencia;
+}
+
+if(data.faturamento){
+payload.faturamento=data.faturamento;
+}
+
+if(data.investimento){
+payload.investimento=data.investimento;
+}
 
 
 const response=
 await fetch(
 WEBHOOK,
 {
-
 method:'POST',
 
 headers:{
@@ -931,16 +879,12 @@ throw new Error(
 
 }
 
-
 return payload;
 
 }
 
 
-
-/* =========================
-   INICIAR FUNIL
-========================= */
+/* INICIAR FUNIL */
 
 document
 .querySelector('#start')
@@ -967,19 +911,13 @@ render();
 };
 
 
-
-/* =========================
-   RENDER PERGUNTAS
-========================= */
+/* RENDER */
 
 function render(){
 
-const x=
-questions[step];
+const x=questions[step];
 
-err.style.display=
-'none';
-
+err.style.display='none';
 
 document
 .querySelector('#stepLabel')
@@ -1094,8 +1032,7 @@ ${o}
 }
 
 
-q.innerHTML=
-html;
+q.innerHTML=html;
 
 
 q
@@ -1106,8 +1043,7 @@ b=>
 
 b.onclick=()=>{
 
-data[x.key]=
-b.dataset.value;
+data[x.key]=b.dataset.value;
 
 
 q
@@ -1156,15 +1092,11 @@ advance();
 }
 
 
-
-/* =========================
-   SALVAR RESPOSTA
-========================= */
+/* SALVAR RESPOSTA */
 
 function save(){
 
-const x=
-questions[step];
+const x=questions[step];
 
 
 if(x.type==='text'){
@@ -1198,17 +1130,13 @@ return !!data[x.key];
 }
 
 
-
-/* =========================
-   AVANÇAR
-========================= */
+/* AVANÇAR */
 
 async function advance(){
 
 if(!save()){
 
-err.style.display=
-'block';
+err.style.display='block';
 
 return;
 
@@ -1224,10 +1152,74 @@ pergunta:questions[step].key
 );
 
 
-if(
-step<
-questions.length-1
-){
+const ultimaPergunta=
+step===questions.length-1;
+
+
+/*
+A PARTIR DO WHATSAPP:
+
+Nome = pergunta 1
+WhatsApp = pergunta 2
+
+Assim que os dois existem,
+o lead já começa a ser salvo.
+*/
+
+if(data.nome && data.whatsapp){
+
+try{
+
+await enviarLead(
+ultimaPergunta
+?
+'formulario_concluido'
+:
+'em_preenchimento'
+);
+
+}
+
+catch(e){
+
+console.error(
+'Erro no salvamento progressivo:',
+e
+);
+
+/*
+Se der erro no meio do formulário,
+não impedimos a pessoa de continuar.
+
+Se for a última etapa, aí mostramos erro.
+*/
+
+if(ultimaPergunta){
+
+err.textContent=
+'Não conseguimos salvar seus dados. Tente novamente.';
+
+err.style.display=
+'block';
+
+next.disabled=
+false;
+
+next.textContent=
+'VER AGENDA →';
+
+return;
+
+}
+
+}
+
+}
+
+
+/* AINDA NÃO TERMINOU */
+
+if(!ultimaPergunta){
 
 step++;
 
@@ -1238,6 +1230,8 @@ return;
 }
 
 
+/* FORMULÁRIO CONCLUÍDO */
+
 next.disabled=true;
 
 next.textContent=
@@ -1247,8 +1241,41 @@ next.textContent=
 try{
 
 
-const payload=
-await enviarLead();
+const payload={
+
+nome:data.nome||'',
+
+whatsapp:data.whatsapp||'',
+
+instagram:data.instagram||'',
+
+email:data.email||'',
+
+experiencia_trafego:
+data.experiencia||'',
+
+faturamento:
+data.faturamento||'',
+
+investimento:
+data.investimento||'',
+
+utm_source:
+params.get('utm_source')||'',
+
+utm_medium:
+params.get('utm_medium')||'',
+
+utm_campaign:
+params.get('utm_campaign')||'',
+
+utm_content:
+params.get('utm_content')||'',
+
+utm_term:
+params.get('utm_term')||''
+
+};
 
 
 localStorage.setItem(
@@ -1266,6 +1293,8 @@ new Date().toISOString()
 
 );
 
+
+/* EVENTO DE LEAD SÓ NO FINAL */
 
 pixelStandard(
 'Lead'
@@ -1331,7 +1360,6 @@ next.textContent=
 }
 
 
-
 next.onclick=
 advance;
 
@@ -1349,10 +1377,7 @@ render();
 };
 
 
-
-/* =========================
-   CARROSSEL
-========================= */
+/* CARROSSEL */
 
 const resultadosCarousel=
 document.querySelector(
@@ -1403,10 +1428,7 @@ passive:true
 }
 
 
-
-/* =========================
-   CAL.COM
-========================= */
+/* CAL.COM */
 
 (function(C,A,L){
 
@@ -1534,7 +1556,6 @@ hideEventTypeDetails:false,
 layout:"month_view"
 }
 );
-
 
 
 /* REUNIÃO AGENDADA */
